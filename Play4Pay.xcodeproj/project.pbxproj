@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC2695181968AE5C0001EE62 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2695171968AE5C0001EE62 /* FacebookSDK.framework */; };
+		AC26951B1968B4CC0001EE62 /* PGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC26951A1968B4CC0001EE62 /* PGLoginController.m */; };
 		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
 		D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8F1966601800182070 /* CoreGraphics.framework */; };
 		D4ACAC921966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC2695171968AE5C0001EE62 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		AC2695191968B4CC0001EE62 /* PGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLoginController.h; sourceTree = "<group>"; };
+		AC26951A1968B4CC0001EE62 /* PGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLoginController.m; sourceTree = "<group>"; };
 		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */,
+				AC2695181968AE5C0001EE62 /* FacebookSDK.framework in Frameworks */,
 				D4ACAC921966601800182070 /* UIKit.framework in Frameworks */,
 				D4ACAC941966601800182070 /* SpriteKit.framework in Frameworks */,
 				D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */,
@@ -114,6 +120,7 @@
 		D4ACAC8C1966601800182070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC2695171968AE5C0001EE62 /* FacebookSDK.framework */,
 				D4ACAC8D1966601800182070 /* Foundation.framework */,
 				D4ACAC8F1966601800182070 /* CoreGraphics.framework */,
 				D4ACAC911966601800182070 /* UIKit.framework */,
@@ -126,6 +133,8 @@
 		D4ACAC951966601800182070 /* Play4Pay */ = {
 			isa = PBXGroup;
 			children = (
+				AC2695191968B4CC0001EE62 /* PGLoginController.h */,
+				AC26951A1968B4CC0001EE62 /* PGLoginController.m */,
 				D4ACAC9E1966601800182070 /* PGAppDelegate.h */,
 				D4ACAC9F1966601800182070 /* PGAppDelegate.m */,
 				D4ACACA11966601800182070 /* Main.storyboard */,
@@ -305,6 +314,7 @@
 			files = (
 				D4ACAC9C1966601800182070 /* main.m in Sources */,
 				D4ACACA91966601800182070 /* PGMainScene.m in Sources */,
+				AC26951B1968B4CC0001EE62 /* PGLoginController.m in Sources */,
 				D4ACACA61966601800182070 /* PGViewController.m in Sources */,
 				D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */,
 				D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */,
@@ -433,9 +443,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/blotter/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
 				INFOPLIST_FILE = "Play4Pay/Play4Pay-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -447,9 +462,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/blotter/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
 				INFOPLIST_FILE = "Play4Pay/Play4Pay-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -515,6 +535,7 @@
 				D4ACACC51966601800182070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4ACACC61966601800182070 /* Build configuration list for PBXNativeTarget "Play4PayTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +544,7 @@
 				D4ACACC81966601800182070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
