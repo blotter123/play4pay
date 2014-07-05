@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
+		D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8F1966601800182070 /* CoreGraphics.framework */; };
+		D4ACAC921966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
+		D4ACAC941966601800182070 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC931966601800182070 /* SpriteKit.framework */; };
+		D4ACAC9A1966601800182070 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACAC981966601800182070 /* InfoPlist.strings */; };
+		D4ACAC9C1966601800182070 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACAC9B1966601800182070 /* main.m */; };
+		D4ACACA01966601800182070 /* PGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACAC9F1966601800182070 /* PGAppDelegate.m */; };
+		D4ACACA31966601800182070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4ACACA11966601800182070 /* Main.storyboard */; };
+		D4ACACA61966601800182070 /* PGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACA51966601800182070 /* PGViewController.m */; };
+		D4ACACA91966601800182070 /* PGMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACA81966601800182070 /* PGMainScene.m */; };
+		D4ACACAD1966601800182070 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4ACACAC1966601800182070 /* Images.xcassets */; };
+		D4ACACB41966601800182070 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACACB31966601800182070 /* XCTest.framework */; };
+		D4ACACB51966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
+		D4ACACB61966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
+		D4ACACBE1966601800182070 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACACBC1966601800182070 /* InfoPlist.strings */; };
+		D4ACACC01966601800182070 /* Play4PayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACBF1966601800182070 /* Play4PayTests.m */; };
+		D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACCC19666C5D00182070 /* PGSpriteNode.m */; };
+		D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACD419667B2400182070 /* UIColor+Comparison.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4ACACB71966601800182070 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4ACAC821966601800182070 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4ACAC891966601800182070;
+			remoteInfo = Play4Pay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D4ACAC911966601800182070 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D4ACAC931966601800182070 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		D4ACAC971966601800182070 /* Play4Pay-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Play4Pay-Info.plist"; sourceTree = "<group>"; };
+		D4ACAC991966601800182070 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4ACAC9B1966601800182070 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D4ACAC9D1966601800182070 /* Play4Pay-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Play4Pay-Prefix.pch"; sourceTree = "<group>"; };
+		D4ACAC9E1966601800182070 /* PGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGAppDelegate.h; sourceTree = "<group>"; };
+		D4ACAC9F1966601800182070 /* PGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGAppDelegate.m; sourceTree = "<group>"; };
+		D4ACACA21966601800182070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D4ACACA41966601800182070 /* PGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGViewController.h; sourceTree = "<group>"; };
+		D4ACACA51966601800182070 /* PGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGViewController.m; sourceTree = "<group>"; };
+		D4ACACA71966601800182070 /* PGMainScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGMainScene.h; sourceTree = "<group>"; };
+		D4ACACA81966601800182070 /* PGMainScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PGMainScene.m; sourceTree = "<group>"; };
+		D4ACACAC1966601800182070 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D4ACACB21966601800182070 /* Play4PayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Play4PayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4ACACB31966601800182070 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D4ACACBB1966601800182070 /* Play4PayTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Play4PayTests-Info.plist"; sourceTree = "<group>"; };
+		D4ACACBD1966601800182070 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4ACACBF1966601800182070 /* Play4PayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Play4PayTests.m; sourceTree = "<group>"; };
+		D4ACACCB19666C5D00182070 /* PGSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGSpriteNode.h; sourceTree = "<group>"; };
+		D4ACACCC19666C5D00182070 /* PGSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGSpriteNode.m; sourceTree = "<group>"; };
+		D4ACACCF1966751600182070 /* PGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGConstants.h; sourceTree = "<group>"; };
+		D4ACACD319667B2400182070 /* UIColor+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Comparison.h"; sourceTree = "<group>"; };
+		D4ACACD419667B2400182070 /* UIColor+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Comparison.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4ACAC871966601800182070 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */,
+				D4ACAC921966601800182070 /* UIKit.framework in Frameworks */,
+				D4ACAC941966601800182070 /* SpriteKit.framework in Frameworks */,
+				D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4ACACAF1966601800182070 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4ACACB41966601800182070 /* XCTest.framework in Frameworks */,
+				D4ACACB61966601800182070 /* UIKit.framework in Frameworks */,
+				D4ACACB51966601800182070 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4ACAC811966601800182070 = {
+			isa = PBXGroup;
+			children = (
+				D4ACAC951966601800182070 /* Play4Pay */,
+				D4ACACB91966601800182070 /* Play4PayTests */,
+				D4ACAC8C1966601800182070 /* Frameworks */,
+				D4ACAC8B1966601800182070 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D4ACAC8B1966601800182070 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACAC8A1966601800182070 /* Play4Pay.app */,
+				D4ACACB21966601800182070 /* Play4PayTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4ACAC8C1966601800182070 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACAC8D1966601800182070 /* Foundation.framework */,
+				D4ACAC8F1966601800182070 /* CoreGraphics.framework */,
+				D4ACAC911966601800182070 /* UIKit.framework */,
+				D4ACAC931966601800182070 /* SpriteKit.framework */,
+				D4ACACB31966601800182070 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4ACAC951966601800182070 /* Play4Pay */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACAC9E1966601800182070 /* PGAppDelegate.h */,
+				D4ACAC9F1966601800182070 /* PGAppDelegate.m */,
+				D4ACACA11966601800182070 /* Main.storyboard */,
+				D4ACACA41966601800182070 /* PGViewController.h */,
+				D4ACACA51966601800182070 /* PGViewController.m */,
+				D4ACACCA19666C4400182070 /* Nodes */,
+				D4ACACC919666C3B00182070 /* Scenes */,
+				D4ACACD219667B0A00182070 /* Categories */,
+				D4ACACCE196674FE00182070 /* Misc */,
+				D4ACACAC1966601800182070 /* Images.xcassets */,
+				D4ACAC961966601800182070 /* Supporting Files */,
+			);
+			path = Play4Pay;
+			sourceTree = "<group>";
+		};
+		D4ACAC961966601800182070 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACAC971966601800182070 /* Play4Pay-Info.plist */,
+				D4ACAC981966601800182070 /* InfoPlist.strings */,
+				D4ACAC9B1966601800182070 /* main.m */,
+				D4ACAC9D1966601800182070 /* Play4Pay-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4ACACB91966601800182070 /* Play4PayTests */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACACBF1966601800182070 /* Play4PayTests.m */,
+				D4ACACBA1966601800182070 /* Supporting Files */,
+			);
+			path = Play4PayTests;
+			sourceTree = "<group>";
+		};
+		D4ACACBA1966601800182070 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACACBB1966601800182070 /* Play4PayTests-Info.plist */,
+				D4ACACBC1966601800182070 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4ACACC919666C3B00182070 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACACA71966601800182070 /* PGMainScene.h */,
+				D4ACACA81966601800182070 /* PGMainScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		D4ACACCA19666C4400182070 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACACCB19666C5D00182070 /* PGSpriteNode.h */,
+				D4ACACCC19666C5D00182070 /* PGSpriteNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		D4ACACCE196674FE00182070 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACACCF1966751600182070 /* PGConstants.h */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		D4ACACD219667B0A00182070 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D4ACACD319667B2400182070 /* UIColor+Comparison.h */,
+				D4ACACD419667B2400182070 /* UIColor+Comparison.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D4ACAC891966601800182070 /* Play4Pay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4ACACC31966601800182070 /* Build configuration list for PBXNativeTarget "Play4Pay" */;
+			buildPhases = (
+				D4ACAC861966601800182070 /* Sources */,
+				D4ACAC871966601800182070 /* Frameworks */,
+				D4ACAC881966601800182070 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Play4Pay;
+			productName = Play4Pay;
+			productReference = D4ACAC8A1966601800182070 /* Play4Pay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D4ACACB11966601800182070 /* Play4PayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4ACACC61966601800182070 /* Build configuration list for PBXNativeTarget "Play4PayTests" */;
+			buildPhases = (
+				D4ACACAE1966601800182070 /* Sources */,
+				D4ACACAF1966601800182070 /* Frameworks */,
+				D4ACACB01966601800182070 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4ACACB81966601800182070 /* PBXTargetDependency */,
+			);
+			name = Play4PayTests;
+			productName = Play4PayTests;
+			productReference = D4ACACB21966601800182070 /* Play4PayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4ACAC821966601800182070 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PG;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Play4Pay;
+				TargetAttributes = {
+					D4ACACB11966601800182070 = {
+						TestTargetID = D4ACAC891966601800182070;
+					};
+				};
+			};
+			buildConfigurationList = D4ACAC851966601800182070 /* Build configuration list for PBXProject "Play4Pay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D4ACAC811966601800182070;
+			productRefGroup = D4ACAC8B1966601800182070 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4ACAC891966601800182070 /* Play4Pay */,
+				D4ACACB11966601800182070 /* Play4PayTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4ACAC881966601800182070 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4ACAC9A1966601800182070 /* InfoPlist.strings in Resources */,
+				D4ACACAD1966601800182070 /* Images.xcassets in Resources */,
+				D4ACACA31966601800182070 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4ACACB01966601800182070 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4ACACBE1966601800182070 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4ACAC861966601800182070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4ACAC9C1966601800182070 /* main.m in Sources */,
+				D4ACACA91966601800182070 /* PGMainScene.m in Sources */,
+				D4ACACA61966601800182070 /* PGViewController.m in Sources */,
+				D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */,
+				D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */,
+				D4ACACA01966601800182070 /* PGAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4ACACAE1966601800182070 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4ACACC01966601800182070 /* Play4PayTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4ACACB81966601800182070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4ACAC891966601800182070 /* Play4Pay */;
+			targetProxy = D4ACACB71966601800182070 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D4ACAC981966601800182070 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4ACAC991966601800182070 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D4ACACA11966601800182070 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4ACACA21966601800182070 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D4ACACBC1966601800182070 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4ACACBD1966601800182070 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D4ACACC11966601800182070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D4ACACC21966601800182070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D4ACACC41966601800182070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
+				INFOPLIST_FILE = "Play4Pay/Play4Pay-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D4ACACC51966601800182070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
+				INFOPLIST_FILE = "Play4Pay/Play4Pay-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D4ACACC71966601800182070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Play4Pay.app/Play4Pay";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Play4PayTests/Play4PayTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D4ACACC81966601800182070 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Play4Pay.app/Play4Pay";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
+				INFOPLIST_FILE = "Play4PayTests/Play4PayTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4ACAC851966601800182070 /* Build configuration list for PBXProject "Play4Pay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4ACACC11966601800182070 /* Debug */,
+				D4ACACC21966601800182070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4ACACC31966601800182070 /* Build configuration list for PBXNativeTarget "Play4Pay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4ACACC41966601800182070 /* Debug */,
+				D4ACACC51966601800182070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D4ACACC61966601800182070 /* Build configuration list for PBXNativeTarget "Play4PayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4ACACC71966601800182070 /* Debug */,
+				D4ACACC81966601800182070 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4ACAC821966601800182070 /* Project object */;
+}
