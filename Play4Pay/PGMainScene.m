@@ -49,7 +49,7 @@
         self.gridContent = [[SKSpriteNode alloc] initWithColor:PRIMARY_COLOR size:self.size];
         self.gridContent.position = CGPointMake(0, 0);
         
-        [self.gameMode setupWithScene:self andContainer:self.gridContent];
+        [self runSceneSetup];
         [self addScreenGrid];
         
         [self addChild:self.gridContent];
@@ -66,6 +66,10 @@
 }
 
 #pragma mark - Methods
+
+-(void) runSceneSetup {
+    
+}
 
 -(void) addScreenGrid {
     
