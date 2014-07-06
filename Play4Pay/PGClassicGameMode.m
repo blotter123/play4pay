@@ -31,8 +31,12 @@
     return isHot;
 }
 
-- (CGFloat) movingSpeed {
-    return MANUAL_MOVE_SPEED;
+- (CGFloat) movementSpeed {
+    return MANUAL_MOVEMENT_SPEED;
+}
+
+- (CGFloat) animationSpeed {
+    return MANUAL_ANIMATION_SPEED;
 }
 
 - (UIColor*) colorAtIndexPath:(NSIndexPath*)indexPath {

@@ -13,7 +13,11 @@
 #define TOTAL_ROWS          4
 #define TOTAL_COLUMNS       4
 
-#define MANUAL_MOVE_SPEED   0.125f
+#define AUTOMATIC_ANIMATION_SPEED   0.000f
+#define MANUAL_ANIMATION_SPEED      0.125f
+
+#define MANUAL_MOVEMENT_SPEED       0.000f
+#define AUTOMATIC_MOVEMENT_SPEED    1.125f
 
 #define PRIMARY_COLOR       [UIColor blackColor]
 #define SECONDARY_COLOR     [UIColor whiteColor]
