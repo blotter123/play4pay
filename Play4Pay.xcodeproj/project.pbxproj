@@ -98,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ACBFF1F11969CE2800673595 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AC2695221969952C0001EE62 /* PGMenuController.h */,
+				AC2695231969952C0001EE62 /* PGMenuController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		D4ACAC811966601800182070 = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +142,7 @@
 		D4ACAC951966601800182070 /* Play4Pay */ = {
 			isa = PBXGroup;
 			children = (
-				AC2695221969952C0001EE62 /* PGMenuController.h */,
-				AC2695231969952C0001EE62 /* PGMenuController.m */,
+				ACBFF1F11969CE2800673595 /* Menu */,
 				D4ACAC9E1966601800182070 /* PGAppDelegate.h */,
 				D4ACAC9F1966601800182070 /* PGAppDelegate.m */,
 				D4ACACA11966601800182070 /* Main.storyboard */,

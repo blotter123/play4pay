@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PGMenuCell.h"
 
-@interface PGMenuController : UIViewController
+@interface PGMenuController : UIViewController 
+
 
 @property (weak, nonatomic) IBOutlet UIButton *fbLoginButton;
+
+
 
 @end
