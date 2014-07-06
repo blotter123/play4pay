@@ -25,7 +25,7 @@
     // Create and configure the scene.
     PGMainScene * scene = [PGMainScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.gameMode = [PGClassicGameMode gameMode];
+    scene.gameMode = self.gameMode;
     
     // Present the scene.
     [skView presentScene:scene];
