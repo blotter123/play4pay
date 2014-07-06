@@ -1,5 +1,5 @@
 //
-//  PGLoginController.h
+//  PGBaseController.h
 //  Play4Pay
 //
 //  Created by Benedikt Lotter on 7/5/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
 
-@interface PGLoginController : UINavigationController <FBLoginViewDelegate>
+@interface PGBaseController : UINavigationController
 
 @end

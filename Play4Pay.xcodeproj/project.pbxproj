@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC2695181968AE5C0001EE62 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2695171968AE5C0001EE62 /* FacebookSDK.framework */; };
-		AC26951B1968B4CC0001EE62 /* PGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC26951A1968B4CC0001EE62 /* PGLoginController.m */; };
+		AC2695241969952C0001EE62 /* PGMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2695231969952C0001EE62 /* PGMenuController.m */; };
 		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
 		D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8F1966601800182070 /* CoreGraphics.framework */; };
 		D4ACAC921966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
@@ -41,8 +41,8 @@
 
 /* Begin PBXFileReference section */
 		AC2695171968AE5C0001EE62 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		AC2695191968B4CC0001EE62 /* PGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGLoginController.h; sourceTree = "<group>"; };
-		AC26951A1968B4CC0001EE62 /* PGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGLoginController.m; sourceTree = "<group>"; };
+		AC2695221969952C0001EE62 /* PGMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMenuController.h; sourceTree = "<group>"; };
+		AC2695231969952C0001EE62 /* PGMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMenuController.m; sourceTree = "<group>"; };
 		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,8 +133,8 @@
 		D4ACAC951966601800182070 /* Play4Pay */ = {
 			isa = PBXGroup;
 			children = (
-				AC2695191968B4CC0001EE62 /* PGLoginController.h */,
-				AC26951A1968B4CC0001EE62 /* PGLoginController.m */,
+				AC2695221969952C0001EE62 /* PGMenuController.h */,
+				AC2695231969952C0001EE62 /* PGMenuController.m */,
 				D4ACAC9E1966601800182070 /* PGAppDelegate.h */,
 				D4ACAC9F1966601800182070 /* PGAppDelegate.m */,
 				D4ACACA11966601800182070 /* Main.storyboard */,
@@ -312,9 +312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC2695241969952C0001EE62 /* PGMenuController.m in Sources */,
 				D4ACAC9C1966601800182070 /* main.m in Sources */,
 				D4ACACA91966601800182070 /* PGMainScene.m in Sources */,
-				AC26951B1968B4CC0001EE62 /* PGLoginController.m in Sources */,
 				D4ACACA61966601800182070 /* PGViewController.m in Sources */,
 				D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */,
 				D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */,

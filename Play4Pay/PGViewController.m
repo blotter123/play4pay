@@ -28,6 +28,8 @@
     [skView presentScene:scene];
 }
 
+
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
