@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC2695181968AE5C0001EE62 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2695171968AE5C0001EE62 /* FacebookSDK.framework */; };
 		AC2695241969952C0001EE62 /* PGMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2695231969952C0001EE62 /* PGMenuController.m */; };
+		AC9169EA1969F1FE0079BBBA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */; };
 		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
 		D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8F1966601800182070 /* CoreGraphics.framework */; };
 		D4ACAC921966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
@@ -40,9 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC2695171968AE5C0001EE62 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		AC2695221969952C0001EE62 /* PGMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMenuController.h; sourceTree = "<group>"; };
 		AC2695231969952C0001EE62 /* PGMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMenuController.m; sourceTree = "<group>"; };
+		AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,7 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */,
-				AC2695181968AE5C0001EE62 /* FacebookSDK.framework in Frameworks */,
+				AC9169EA1969F1FE0079BBBA /* FacebookSDK.framework in Frameworks */,
 				D4ACAC921966601800182070 /* UIKit.framework in Frameworks */,
 				D4ACAC941966601800182070 /* SpriteKit.framework in Frameworks */,
 				D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */,
@@ -129,7 +129,7 @@
 		D4ACAC8C1966601800182070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AC2695171968AE5C0001EE62 /* FacebookSDK.framework */,
+				AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */,
 				D4ACAC8D1966601800182070 /* Foundation.framework */,
 				D4ACAC8F1966601800182070 /* CoreGraphics.framework */,
 				D4ACAC911966601800182070 /* UIKit.framework */,
@@ -454,6 +454,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/blotter/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
@@ -473,6 +474,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/blotter/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
