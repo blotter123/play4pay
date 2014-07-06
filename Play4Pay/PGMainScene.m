@@ -12,7 +12,9 @@
 
 @interface PGMainScene ()
 
+@property (nonatomic) NSInteger rowCount;
 @property (nonatomic) NSInteger rowIndex;
+
 @property (nonatomic) BOOL isDisabled;
 @property (nonatomic) BOOL contentCreated;
 @property (nonatomic, weak) SKLabelNode *welcomeNode;
@@ -28,9 +30,8 @@
     
     if (self = [super initWithSize:size]) {
 
-        //  Initial value is 2 - NOT zero based
-        //  First row is deactivated
         self.rowIndex = 0;
+        self.rowCount = 0;
         self.isDisabled = NO;
     }
     
@@ -55,7 +56,7 @@
         [self addChild:self.gridContent];
         
         self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-        self.scoreLabel.text = [NSString stringWithFormat:@"Speed: %f", [self.gameMode movingSpeed]];
+        self.scoreLabel.text = [NSString stringWithFormat:@"Speed: %f", [self.gameMode movementSpeed]];
         self.scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - 50);
         self.scoreLabel.fontColor = [UIColor redColor];
 
@@ -67,19 +68,118 @@
 
 #pragma mark - Methods
 
--(void) runSceneSetup {
+- (void) runSceneSetup {
     
+    //  Fill screen by 4x4 sprites
+    
+    for (int i = 0; i < TOTAL_ROWS; i++) {
+        [self addRowAtIndex:i];
+    }
 }
 
--(void) addScreenGrid {
+- (void) addRowOnTop {
+    
+    NSLog(@"addRowOnTop");
+    
+    [self addRowAtIndex:self.rowCount + 1];
+}
+
+- (void) addRowAtIndex:(NSInteger)index {
+    
+    int randomIndex = arc4random() % TOTAL_COLUMNS;
+    
+    CGFloat width = self.size.width / TOTAL_COLUMNS,
+    height = self.size.height / TOTAL_ROWS;
+    
+    for (int i = 0; i < TOTAL_COLUMNS; i++) {
+        
+        if (i % TOTAL_COLUMNS == 0 && i != 0)
+            randomIndex = arc4random() % TOTAL_COLUMNS;
+        
+        NSInteger positionWithinContainer = (index * TOTAL_COLUMNS) + i;
+        
+        PGSpriteNode *sprite = [PGSpriteNode nodeWithSize:CGSizeMake(width, height) position:positionWithinContainer andColor:SECONDARY_COLOR];
+        
+        if (randomIndex == (i % TOTAL_COLUMNS))
+            sprite.color = PRIMARY_COLOR;
+        
+        if (index == 0)
+            sprite.color = INACTIVE_COLOR;
+        else if (index >= 50)
+            sprite.color = COMPLETE_COLOR;
+        
+        [self.gridContent addChild:sprite];
+    }
+    
+    self.rowCount++;
+}
+
+-(void) moveToNextRow {
+    
+    self.rowIndex++;
+    
+    //  Increase size of grid content
+    
+    [self.gridContent setSize:CGSizeMake(self.size.width, self.gridContent.size.height + (self.size.height / TOTAL_COLUMNS))];
+    
+    //  Add row
+    
+    [self addRowOnTop];
+    
+    if ([self.gameMode animationSpeed] > 0.0f) {
+
+        //  Run move action
+        SKAction *moveAction = [SKAction moveByX:0.0f y:-(self.size.height / TOTAL_ROWS) duration:[self.gameMode animationSpeed]];
+        [self.gridContent runAction:moveAction];
+    }
+}
+
+-(void) resetGrid {
+    
+    //  Clear existing nodes
+    
+    for (SKNode *node in self.gridContent.children) {
+        [node removeFromParent];
+    }
+    
+    //  Reset container
+    
+    [self.gridContent setSize:self.size];
+    [self.gridContent setPosition:CGPointMake(0, 0)];
+    
+    //  Reset score
+    
+    [self setRowIndex:0];
+    [self setIsDisabled:NO];
+    
+    //  Run scene setup
+    
+    [self runSceneSetup];
+}
+
+- (void) moveAutomatically {
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Speed: %f", [self.gameMode movementSpeed]];
+    
+    SKAction *action = [SKAction sequence:@[[SKAction performSelector:@selector(moveToNextRow) onTarget:self],
+                         [SKAction waitForDuration:[self.gameMode movementSpeed]]]];
+
+    [self runAction:action completion:^{
+        [self moveAutomatically];
+    }];
+}
+
+#pragma mark - Helper
+
+- (void) addScreenGrid {
     
     CGFloat positionX = CGRectGetMinX(self.frame),
-            positionY = CGRectGetMinY(self.frame),
-            maxWidth = self.size.width,
-            maxHeight = self.size.height;
+    positionY = CGRectGetMinY(self.frame),
+    maxWidth = self.size.width,
+    maxHeight = self.size.height;
     
     for (int i = 0; i < GRID_COUNT; i++) {
-     
+        
         BOOL isHorizontal = i < sqrt(GRID_COUNT);
         
         if (isHorizontal) {
@@ -103,60 +203,6 @@
         
         [self addChild:gridLine];
     }
-}
-
--(void) moveToNextRow {
-    
-    self.rowIndex++;
-    
-    //  Increase size of grid content
-    
-    [self.gridContent setSize:CGSizeMake(self.size.width, self.gridContent.size.height + (self.size.height / TOTAL_COLUMNS))];
-    
-    //  Add row
-    
-    // 4 rows are always visible - zero based
-    [self.gameMode addRowAtIndex:self.rowIndex + 1 withScene:self andContainer:self.gridContent];
-    
-    //  Define move action
-    
-    SKAction *moveAction = [SKAction moveByX:0.0f y:-(self.size.height / TOTAL_ROWS) duration:self.gameMode.movingSpeed];
-    [self.gridContent runAction:moveAction];
-}
-
--(void) resetGrid {
-    
-    //  Clear existing nodes
-    
-    for (SKNode *node in self.gridContent.children) {
-        [node removeFromParent];
-    }
-    
-    //  Reset container
-    
-    [self.gridContent setSize:self.size];
-    [self.gridContent setPosition:CGPointMake(0, 0)];
-    
-    //  Reset score
-    
-    [self setRowIndex:0];
-    [self setIsDisabled:NO];
-    
-    //  Rebuild scene based on game mode
-    
-    [self.gameMode setupWithScene:self andContainer:self.gridContent];
-}
-
-- (void) moveAutomatically {
-    
-    self.scoreLabel.text = [NSString stringWithFormat:@"Speed: %f", self.gameMode.movingSpeed];
-    
-    SKAction *action = [SKAction sequence:@[[SKAction performSelector:@selector(moveToNextRow) onTarget:self],
-                         [SKAction waitForDuration:self.gameMode.movingSpeed]]];
-
-    [self runAction:action completion:^{
-        [self moveAutomatically];
-    }];
 }
 
 #pragma mark - Events
@@ -191,8 +237,19 @@
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+- (void) update:(CFTimeInterval)currentTime {
+    
+    if ([self.gameMode movementSpeed] > 0.0f) {
+        
+        self.gridContent.position = CGPointMake(self.gridContent.position.x, self.gridContent.position.y - [self.gameMode movementSpeed]);
+        
+        int topReached = (int)(self.gridContent.position.y) % (int)(self.size.height / TOTAL_ROWS);
+        
+        NSLog(@"VALUE: %d", topReached);
+        
+        if (topReached == 0)
+            [self addRowOnTop];
+    }
 }
 
 @end

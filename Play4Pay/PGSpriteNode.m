@@ -18,7 +18,7 @@
 
 #pragma mark - Convenience Constructor
 
-+ (PGSpriteNode*) nodeWithSize:(CGSize)size position:(int)position andColor:(UIColor*)color {
++ (PGSpriteNode*) nodeWithSize:(CGSize)size position:(NSInteger)position andColor:(UIColor*)color {
     
     CGFloat positionX = (position % TOTAL_COLUMNS) * size.width, positionY = (int)(position / TOTAL_COLUMNS) * size.height;
     

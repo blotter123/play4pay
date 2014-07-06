@@ -49,6 +49,7 @@
 		D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGClassicGameMode.m; sourceTree = "<group>"; };
 		D4741CCF1969F34E00A6B7A3 /* PGGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGameMode.h; sourceTree = "<group>"; };
 		D4741CD01969F34E00A6B7A3 /* PGGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGameMode.m; sourceTree = "<group>"; };
+		D4741CD4196A0C6500A6B7A3 /* PGGameSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGGameSceneDelegate.h; sourceTree = "<group>"; };
 		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +121,7 @@
 				D4741CD01969F34E00A6B7A3 /* PGGameMode.m */,
 				D4741CCD1969F34E00A6B7A3 /* PGClassicGameMode.h */,
 				D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */,
+				D4741CD4196A0C6500A6B7A3 /* PGGameSceneDelegate.h */,
 			);
 			name = "Game Modes";
 			sourceTree = "<group>";
@@ -473,7 +475,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/blotter/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -493,7 +494,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/blotter/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

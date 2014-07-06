@@ -17,6 +17,7 @@
 //  Import defaults
 
     #import "PGConstants.h"
+    #import "PGGameSceneDelegate.h"
 
 //  Import categories
 

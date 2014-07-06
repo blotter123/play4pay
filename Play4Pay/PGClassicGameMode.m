@@ -31,8 +31,12 @@
     return isHot;
 }
 
-- (CGFloat) movingSpeed {
-    return MANUAL_MOVE_SPEED;
+- (CGFloat) movementSpeed {
+    return MANUAL_MOVEMENT_SPEED;
+}
+
+- (CGFloat) animationSpeed {
+    return MANUAL_ANIMATION_SPEED;
 }
 
 - (UIColor*) colorAtIndexPath:(NSIndexPath*)indexPath {
@@ -67,43 +71,6 @@
             return kGameStatusValid;
         
         return kGameStatusFailed;
-    }
-}
-
-- (void) setupWithScene:(SKScene *)scene andContainer:(SKNode*)container {
-
-    //  Fill screen by 4x4 sprites
-    
-    for (int i = 0; i < TOTAL_ROWS; i++) {
-        [self addRowAtIndex:i withScene:scene andContainer:container];
-    }
-}
-
-- (void) addRowAtIndex:(NSInteger)index withScene:(SKScene *)scene andContainer:(SKNode*)container {
-    
-    int randomIndex = arc4random() % TOTAL_COLUMNS;
-    
-    CGFloat width = scene.size.width / TOTAL_COLUMNS,
-    height = scene.size.height / TOTAL_ROWS;
-    
-    for (int i = 0; i < TOTAL_COLUMNS; i++) {
-        
-        if (i % TOTAL_COLUMNS == 0 && i != 0)
-            randomIndex = arc4random() % TOTAL_COLUMNS;
-        
-        NSInteger positionWithinContainer = (index * TOTAL_COLUMNS) + i;
-        
-        PGSpriteNode *sprite = [PGSpriteNode nodeWithSize:CGSizeMake(width, height) position:positionWithinContainer andColor:SECONDARY_COLOR];
-        
-        if (randomIndex == (i % TOTAL_COLUMNS))
-            sprite.color = PRIMARY_COLOR;
-        
-        if (index == 0)
-            sprite.color = INACTIVE_COLOR;
-        else if (index >= 50)
-            sprite.color = COMPLETE_COLOR;
-        
-        [container addChild:sprite];
     }
 }
 
