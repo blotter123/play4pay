@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PGMainScene.h"
 
-@interface PGGameMode : NSObject
+@interface PGGameMode : NSObject<PGGameSceneDelegate>
+
++ (id<PGGameSceneDelegate>) gameMode;
 
 @end

@@ -10,4 +10,20 @@
 
 @implementation PGGameMode
 
+#pragma mark - Convenience Constructor
+
++ (id<PGGameSceneDelegate>) gameMode {
+    return [[PGGameMode alloc] init];
+}
+
+#pragma mark - Game Scene Delegate Implementation
+
+- (BOOL) isValidNode:(PGSpriteNode *)node atIndex:(NSInteger)rowIndex {
+    return YES;
+}
+
+- (CGFloat) movingSpeed {
+    return 0.0f;
+}
+
 @end

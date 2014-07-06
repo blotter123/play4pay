@@ -7,7 +7,9 @@
 //
 
 #import "PGViewController.h"
+
 #import "PGMainScene.h"
+#import "PGClassicGameMode.h"
 
 @implementation PGViewController
 
@@ -21,8 +23,9 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [PGMainScene sceneWithSize:skView.bounds.size];
+    PGMainScene * scene = [PGMainScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.gameMode = [PGClassicGameMode gameMode];
     
     // Present the scene.
     [skView presentScene:scene];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D435370C1969DF140053240D /* PGGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D435370B1969DF140053240D /* PGGameMode.m */; };
+		D435370F1969DFFA0053240D /* PGClassicGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D435370E1969DFFA0053240D /* PGClassicGameMode.m */; };
 		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
 		D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8F1966601800182070 /* CoreGraphics.framework */; };
 		D4ACAC921966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D435370A1969DF140053240D /* PGGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGameMode.h; sourceTree = "<group>"; };
+		D435370B1969DF140053240D /* PGGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGameMode.m; sourceTree = "<group>"; };
+		D435370D1969DFFA0053240D /* PGClassicGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGClassicGameMode.h; sourceTree = "<group>"; };
+		D435370E1969DFFA0053240D /* PGClassicGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGClassicGameMode.m; sourceTree = "<group>"; };
 		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,6 +98,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D43537091969DE110053240D /* Modes */ = {
+			isa = PBXGroup;
+			children = (
+				D435370A1969DF140053240D /* PGGameMode.h */,
+				D435370B1969DF140053240D /* PGGameMode.m */,
+				D435370D1969DFFA0053240D /* PGClassicGameMode.h */,
+				D435370E1969DFFA0053240D /* PGClassicGameMode.m */,
+			);
+			name = Modes;
+			sourceTree = "<group>";
+		};
 		D4ACAC811966601800182070 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +149,7 @@
 				D4ACACA41966601800182070 /* PGViewController.h */,
 				D4ACACA51966601800182070 /* PGViewController.m */,
 				D4ACACCA19666C4400182070 /* Nodes */,
+				D43537091969DE110053240D /* Modes */,
 				D4ACACC919666C3B00182070 /* Scenes */,
 				D4ACACD219667B0A00182070 /* Categories */,
 				D4ACACCE196674FE00182070 /* Misc */,
@@ -304,10 +322,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4ACAC9C1966601800182070 /* main.m in Sources */,
+				D435370C1969DF140053240D /* PGGameMode.m in Sources */,
 				D4ACACA91966601800182070 /* PGMainScene.m in Sources */,
 				D4ACACA61966601800182070 /* PGViewController.m in Sources */,
 				D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */,
 				D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */,
+				D435370F1969DFFA0053240D /* PGClassicGameMode.m in Sources */,
 				D4ACACA01966601800182070 /* PGAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +535,7 @@
 				D4ACACC51966601800182070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4ACACC61966601800182070 /* Build configuration list for PBXNativeTarget "Play4PayTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +544,7 @@
 				D4ACACC81966601800182070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

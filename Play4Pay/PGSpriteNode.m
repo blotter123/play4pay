@@ -10,7 +10,7 @@
 
 @interface PGSpriteNode ()
 
-@property (nonatomic) NSInteger gridPosition;
+@property (nonatomic) NSInteger positionWithinContainer;
 
 @end
 
@@ -18,25 +18,15 @@
 
 #pragma mark - Convenience Constructor
 
-+ (PGSpriteNode*) nodeWithSize:(CGSize)size gridPosition:(int)position andColor:(UIColor*)color {
++ (PGSpriteNode*) nodeWithSize:(CGSize)size position:(int)position andColor:(UIColor*)color {
     
     CGFloat positionX = (position % TOTAL_COLUMNS) * size.width, positionY = (int)(position / TOTAL_COLUMNS) * size.height;
     
     PGSpriteNode *spriteNode = [[PGSpriteNode alloc] initWithColor:color size:size];
     spriteNode.position = CGPointMake(positionX + size.width / 2.0f, positionY + size.height / 2.0f);
     spriteNode.name = [NSString stringWithFormat:@"%@%d", SPRITE_NAME, position];
-    spriteNode.gridPosition = position;
-    
-//    SKLabelNode *labelNode = [[SKLabelNode alloc] initWithFontNamed:@"Chalkduster"];
-//    labelNode.text = spriteNode.name;
-//    labelNode.fontSize = 16;
-//    labelNode.fontColor = color;
-//    labelNode.blendMode = SKBlendModeSubtract;
-//    labelNode.position = CGPointMake(CGRectGetMidX(spriteNode.frame),
-//                                            CGRectGetMidY(spriteNode.frame));
-//    
-//    [spriteNode addChild:labelNode];
-    
+    spriteNode.positionWithinContainer = position;
+
     return spriteNode;
 }
 
@@ -53,6 +43,10 @@
 
 #pragma mark - API
 
+- (NSInteger) rowIndex {
+    return (self.positionWithinContainer / TOTAL_COLUMNS);
+}
+
 - (BOOL) isInRow:(NSInteger)row {
     
     //  zero based - be careful!
@@ -60,7 +54,7 @@
     NSInteger maxPos = (row * TOTAL_COLUMNS) - 1;
     NSInteger minPos = (maxPos + 1) - TOTAL_COLUMNS;
     
-    return self.gridPosition >= minPos && self.gridPosition <= maxPos;
+    return self.positionWithinContainer >= minPos && self.positionWithinContainer <= maxPos;
 }
 
 - (BOOL) isHot {
