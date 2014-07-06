@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "PGSpriteNode.h"
+#import "PGGameMode.h"
 
 typedef enum {
     kGameStatusValid,

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import "PGGameMode.h"
 
 @interface PGViewController : UIViewController
 
+@property PGGameMode *gameMode;
 @end
