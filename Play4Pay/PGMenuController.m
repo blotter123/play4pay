@@ -9,7 +9,10 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 #import "PGMenuController.h"
+#import "PGViewController.h"
 #import "PGAppDelegate.h"
+#import "PGGameMode.h"
+#import "PGClassicGameMode.h"
 
 @interface PGMenuController ()
 
@@ -171,7 +174,12 @@
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
     
+    
+    PGViewController *gameController = segue.destinationViewController;
+
     if ([segue.identifier isEqualToString:@"ClassicMode"]) {
+        
+        gameController.gameMode = [PGClassicGameMode gameMode];
         //set Classic Mode for PGViewController
     } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
         //set Arcade Mode for PGViewController
@@ -180,6 +188,8 @@
         
     }
 }
+
+
 
 
 @end
