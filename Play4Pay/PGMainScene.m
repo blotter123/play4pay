@@ -67,41 +67,40 @@
 
 #pragma mark - Methods
 
--(void) runSceneSetup {
+- (void) runSceneSetup {
     
+    //  Fill screen by 4x4 sprites
+    
+    for (int i = 0; i < TOTAL_ROWS; i++) {
+        [self addRowAtIndex:i];
+    }
 }
 
--(void) addScreenGrid {
+- (void) addRowAtIndex:(NSInteger)index {
     
-    CGFloat positionX = CGRectGetMinX(self.frame),
-            positionY = CGRectGetMinY(self.frame),
-            maxWidth = self.size.width,
-            maxHeight = self.size.height;
+    int randomIndex = arc4random() % TOTAL_COLUMNS;
     
-    for (int i = 0; i < GRID_COUNT; i++) {
-     
-        BOOL isHorizontal = i < sqrt(GRID_COUNT);
+    CGFloat width = self.size.width / TOTAL_COLUMNS,
+    height = self.size.height / TOTAL_ROWS;
+    
+    for (int i = 0; i < TOTAL_COLUMNS; i++) {
         
-        if (isHorizontal) {
-            positionX = CGRectGetMinX(self.frame);
-            positionY += self.size.height / TOTAL_ROWS;
-        }
-        else {
-            positionX += self.size.width / TOTAL_COLUMNS;
-            positionY = CGRectGetMinY(self.frame);
-        }
+        if (i % TOTAL_COLUMNS == 0 && i != 0)
+            randomIndex = arc4random() % TOTAL_COLUMNS;
         
-        CGSize size;
-        if (isHorizontal)
-            size = CGSizeMake(maxWidth, 0.5f);
-        else
-            size = CGSizeMake(0.5f, maxHeight);
+        NSInteger positionWithinContainer = (index * TOTAL_COLUMNS) + i;
         
-        SKSpriteNode *gridLine = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:size];
-        gridLine.position = CGPointMake(positionX + size.width / 2.0f, positionY + size.height / 2.0f);
-        gridLine.zPosition = 10.0f;
+        PGSpriteNode *sprite = [PGSpriteNode nodeWithSize:CGSizeMake(width, height) position:positionWithinContainer andColor:SECONDARY_COLOR];
         
-        [self addChild:gridLine];
+        if (randomIndex == (i % TOTAL_COLUMNS))
+            sprite.color = PRIMARY_COLOR;
+        
+        if (index == 0)
+            sprite.color = INACTIVE_COLOR;
+        else if (index >= 50)
+            sprite.color = COMPLETE_COLOR;
+        
+        [self.gridContent addChild:sprite];
     }
 }
 
@@ -116,7 +115,7 @@
     //  Add row
     
     // 4 rows are always visible - zero based
-    [self.gameMode addRowAtIndex:self.rowIndex + 1 withScene:self andContainer:self.gridContent];
+    [self addRowAtIndex:self.rowIndex + 1];
     
     //  Define move action
     
@@ -142,9 +141,9 @@
     [self setRowIndex:0];
     [self setIsDisabled:NO];
     
-    //  Rebuild scene based on game mode
+    //  Run scene setup
     
-    [self.gameMode setupWithScene:self andContainer:self.gridContent];
+    [self runSceneSetup];
 }
 
 - (void) moveAutomatically {
@@ -157,6 +156,42 @@
     [self runAction:action completion:^{
         [self moveAutomatically];
     }];
+}
+
+#pragma mark - Helper
+
+- (void) addScreenGrid {
+    
+    CGFloat positionX = CGRectGetMinX(self.frame),
+    positionY = CGRectGetMinY(self.frame),
+    maxWidth = self.size.width,
+    maxHeight = self.size.height;
+    
+    for (int i = 0; i < GRID_COUNT; i++) {
+        
+        BOOL isHorizontal = i < sqrt(GRID_COUNT);
+        
+        if (isHorizontal) {
+            positionX = CGRectGetMinX(self.frame);
+            positionY += self.size.height / TOTAL_ROWS;
+        }
+        else {
+            positionX += self.size.width / TOTAL_COLUMNS;
+            positionY = CGRectGetMinY(self.frame);
+        }
+        
+        CGSize size;
+        if (isHorizontal)
+            size = CGSizeMake(maxWidth, 0.5f);
+        else
+            size = CGSizeMake(0.5f, maxHeight);
+        
+        SKSpriteNode *gridLine = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:size];
+        gridLine.position = CGPointMake(positionX + size.width / 2.0f, positionY + size.height / 2.0f);
+        gridLine.zPosition = 10.0f;
+        
+        [self addChild:gridLine];
+    }
 }
 
 #pragma mark - Events
@@ -191,8 +226,8 @@
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+- (void) update:(CFTimeInterval)currentTime {
+    NSLog(@"%f", currentTime);
 }
 
 @end

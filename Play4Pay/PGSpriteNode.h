@@ -12,7 +12,7 @@
 
 @interface PGSpriteNode : SKSpriteNode
 
-+ (PGSpriteNode*) nodeWithSize:(CGSize)size position:(int)position andColor:(UIColor*)color;
++ (PGSpriteNode*) nodeWithSize:(CGSize)size position:(NSInteger)position andColor:(UIColor*)color;
 
 - (NSInteger) rowIndex;
 
