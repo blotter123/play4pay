@@ -172,7 +172,7 @@
     NSLog(@"prepareForSegue: %@", segue.identifier);
     
     if ([segue.identifier isEqualToString:@"ClassicMode"]) {
-        //set Class Mode for PGViewController
+        //set Classic Mode for PGViewController
     } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
         //set Arcade Mode for PGViewController
     }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
