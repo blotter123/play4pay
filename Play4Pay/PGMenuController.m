@@ -163,15 +163,23 @@
                       cancelButtonTitle:@"OK!"
                       otherButtonTitles:nil] show];
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSLog(@"prepareForSegue: %@", segue.identifier);
+    
+    if ([segue.identifier isEqualToString:@"ClassicMode"]) {
+        //set Class Mode for PGViewController
+    } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
+        //set Arcade Mode for PGViewController
+    }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
+        //set Zen Mode for PGViewController
+        
+    }
 }
-*/
+
 
 @end
