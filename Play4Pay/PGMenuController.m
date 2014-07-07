@@ -24,7 +24,6 @@
 
 
 
-
 - (IBAction)fbLoginTouched:(id)sender {
     // If the session state is any of the two "open" states when the button is clicked
     if (FBSession.activeSession.state == FBSessionStateOpen
@@ -47,8 +46,6 @@
              [self sessionStateChanged:session state:state error:error];
          }];
     }
-
-    
 }
 
 
@@ -176,16 +173,20 @@
     
     
     PGViewController *gameController = segue.destinationViewController;
-
+    
     if ([segue.identifier isEqualToString:@"ClassicMode"]) {
-        
         gameController.gameMode = [PGClassicGameMode gameMode];
-        //set Classic Mode for PGViewController
-    } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
-        //set Arcade Mode for PGViewController
-    }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
-        //set Zen Mode for PGViewController
         
+        
+    } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
+        
+        //change to Arcade mode
+        gameController.gameMode = [PGClassicGameMode gameMode];
+        
+        
+    }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
+        //change to Zen Mode for PGViewController
+        gameController.gameMode = [PGClassicGameMode gameMode];
     }
 }
 

@@ -77,7 +77,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atd-tO-aEY">
-                                <rect key="frame" x="0.0" y="319" width="320" height="120"/>
+                                <rect key="frame" x="0.0" y="319" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Learn more">
@@ -85,6 +85,17 @@
                                 </state>
                                 <connections>
                                     <segue destination="fXX-3l-J51" kind="modal" id="nxt-wq-14q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOW-s7-abU">
+                                <rect key="frame" x="0.0" y="371" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Facebook Scores API Test">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oqH-Iv-eNR" kind="push" id="6wH-b3-p9G"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,6 +109,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oky-8B-7i1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="447" y="156"/>
+        </scene>
+        <!--Score Controller-->
+        <scene sceneID="iCs-Xt-pkC">
+            <objects>
+                <viewController id="oqH-Iv-eNR" customClass="PGScoreController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bUK-kw-5KH"/>
+                        <viewControllerLayoutGuide type="bottom" id="TNL-LV-z1E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QVN-CA-bVQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wni-wN-zf0">
+                                <rect key="frame" x="78" y="50" width="147" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send Score">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testSend:" destination="oqH-Iv-eNR" eventType="touchUpInside" id="jaH-xC-Rqc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMe-sz-xh4">
+                                <rect key="frame" x="65" y="217" width="173" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Init FB Credentials">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="initFbCredentials:" destination="oqH-Iv-eNR" eventType="touchUpInside" id="Hre-rk-yIQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pjp-pJ-PtP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sad-td-rk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="865"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aA7-lG-egH">
@@ -124,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdw-1z-u7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="472"/>
+            <point key="canvasLocation" x="990" y="165"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="CtS-rA-C9T">
@@ -143,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="-245"/>
+            <point key="canvasLocation" x="983" y="-534"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
