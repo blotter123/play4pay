@@ -78,36 +78,21 @@
 }
 
 - (void) addRowOnTop {
-    
-    NSLog(@"addRowOnTop");
-    
-    [self addRowAtIndex:self.rowCount + 1];
+    [self addRowAtIndex:self.rowCount];
 }
 
-- (void) addRowAtIndex:(NSInteger)index {
-    
-    int randomIndex = arc4random() % TOTAL_COLUMNS;
+- (void) addRowAtIndex:(NSInteger)rowIndex {
     
     CGFloat width = self.size.width / TOTAL_COLUMNS,
     height = self.size.height / TOTAL_ROWS;
     
     for (int i = 0; i < TOTAL_COLUMNS; i++) {
         
-        if (i % TOTAL_COLUMNS == 0 && i != 0)
-            randomIndex = arc4random() % TOTAL_COLUMNS;
+        NSInteger positionWithinContainer = (rowIndex * TOTAL_COLUMNS) + i;
         
-        NSInteger positionWithinContainer = (index * TOTAL_COLUMNS) + i;
+        UIColor *nodeColor = [self.gameMode colorAtIndexPath:[NSIndexPath indexPathForItem:i inSection:rowIndex]];
         
-        PGSpriteNode *sprite = [PGSpriteNode nodeWithSize:CGSizeMake(width, height) position:positionWithinContainer andColor:SECONDARY_COLOR];
-        
-        if (randomIndex == (i % TOTAL_COLUMNS))
-            sprite.color = PRIMARY_COLOR;
-        
-        if (index == 0)
-            sprite.color = INACTIVE_COLOR;
-        else if (index >= 50)
-            sprite.color = COMPLETE_COLOR;
-        
+        PGSpriteNode *sprite = [PGSpriteNode nodeWithSize:CGSizeMake(width, height) position:positionWithinContainer andColor:nodeColor];
         [self.gridContent addChild:sprite];
     }
     
@@ -147,26 +132,13 @@
     [self.gridContent setSize:self.size];
     [self.gridContent setPosition:CGPointMake(0, 0)];
     
-    //  Reset score
-    
+    [self setRowCount:0];
     [self setRowIndex:0];
     [self setIsDisabled:NO];
     
     //  Run scene setup
     
     [self runSceneSetup];
-}
-
-- (void) moveAutomatically {
-    
-    self.scoreLabel.text = [NSString stringWithFormat:@"Speed: %f", [self.gameMode movementSpeed]];
-    
-    SKAction *action = [SKAction sequence:@[[SKAction performSelector:@selector(moveToNextRow) onTarget:self],
-                         [SKAction waitForDuration:[self.gameMode movementSpeed]]]];
-
-    [self runAction:action completion:^{
-        [self moveAutomatically];
-    }];
 }
 
 #pragma mark - Helper

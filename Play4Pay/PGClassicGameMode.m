@@ -41,14 +41,14 @@
 
 - (UIColor*) colorAtIndexPath:(NSIndexPath*)indexPath {
     
-    if (self.currentRow != indexPath.row) {
+    if (self.currentRow != indexPath.section) {
         self.randomIndex = arc4random() % TOTAL_COLUMNS;
-        self.currentRow = indexPath.row;
+        self.currentRow = indexPath.section;
     }
     
-    if (indexPath.row == 0)
+    if (indexPath.section == 0)
         return INACTIVE_COLOR;
-    else if (indexPath.row >= 50)
+    else if (indexPath.section >= 50)
         return COMPLETE_COLOR;
     else {
         
