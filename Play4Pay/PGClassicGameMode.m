@@ -19,6 +19,12 @@
 
 #pragma mark - Convenience Constructor
 
++ (id<PGGameSceneDelegate>) gameModeWithDelegate:(id<PGScoreDelegate>)delegate {
+    PGClassicGameMode *gameMode = [[PGClassicGameMode alloc] init];
+    gameMode.delegate = delegate;
+    return gameMode;
+}
+
 + (id<PGGameSceneDelegate>) gameMode {
     return [[PGClassicGameMode alloc] init];
 }
