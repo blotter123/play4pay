@@ -16,6 +16,7 @@ typedef enum {
     kGameStatusFailed
 } PGGameStatus;
 
+
 @protocol PGGameSceneDelegate <NSObject>
 
 - (CGFloat) movementSpeed;

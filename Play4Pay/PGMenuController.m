@@ -13,6 +13,7 @@
 #import "PGAppDelegate.h"
 #import "PGGameMode.h"
 #import "PGClassicGameMode.h"
+#import "PGDataService.h"
 
 @interface PGMenuController ()
 
@@ -81,6 +82,8 @@
                                           // This method will be called EACH time the session state changes,
                                           // also for intermediate states and NOT just when the session open
                                           [self sessionStateChanged:session state:state error:error];
+                                          
+                                          
                                       }];
     }
     else{
@@ -91,13 +94,29 @@
 // This method will handle ALL the session state changes in the app
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
 {
+    PGDataService* dataService = [PGDataService sharedDataService];
     NSLog(@"sessionStatChanged");
     if (!error && state == FBSessionStateOpen){
         [self userLoggedIn];
+        
+        //write the user's userId and accessToken to plist through DataService
+        NSString* accessToken = [[session accessTokenData] accessToken];
+        [dataService writeProperty:@"fb_access_token" withValue:accessToken];
+        [FBRequestConnection startForMeWithCompletionHandler:
+         ^(FBRequestConnection *connection, id result, NSError *error)
+         {
+             NSString* userId = (NSString*)[result objectForKey:@"id"] ;
+             [dataService writeProperty:@"fb_user_id" withValue:userId];
+             NSLog(@"read fb user id after login: %@",[dataService readProperty:@"fb_user_id"]);
+             NSLog(@"read fb access token after login: %@",[dataService readProperty:@"fb_access_token"]);
+             
+         }];
+        
         return;
     }
     if (state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed){
         [self userLoggedOut];
+        
     }
     
     // Handle errors

@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>zen_high_percent</key>
+	<integer>0</integer>
+	<key>arcade_high_percent</key>
+	<integer>0</integer>
+	<key>classic_high_percent</key>
+	<integer>0</integer>
+	<key>points_constant</key>
+	<integer>0</integer>
+	<key>high_score</key>
+	<integer>0</integer>
+	<key>fb_user_id</key>
+	<string></string>
+	<key>fb_access_token</key>
+	<string></string>
+</dict>
 </plist>

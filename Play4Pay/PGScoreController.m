@@ -9,17 +9,22 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 #import "PGScoreController.h"
+#import "PGDataService.h"
 
 
 @interface PGScoreController ()
 
+typedef enum{
+    GET,
+    POST
+}PGRequestType;
 
 @end
 
 @implementation PGScoreController
 
-NSString *accessToken;
-NSString *userId;
+
+PGDataService *dataService;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,84 +47,81 @@ NSString *userId;
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)initFbCredentials:(id)sender{
-    [self setAccessToken];
-    [self setUserID];
-}
 
 - (IBAction) testSend:(id)sender {
-    NSNumber *score = [NSNumber numberWithInt:5];
+    NSString *score = [NSString stringWithFormat:@"%f",5.0];
     [self sendScore:score];
+    [self getCurrentScore];
 }
 
 
 #pragma mark Facebook Scores API Methods
 
--(void) sendScore:(NSNumber *) score{
+-(void) sendScore:(NSString *) score{
+
+    NSMutableDictionary* postParams = [self fbParamsForRequestType:POST withOptionalScore:score];
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                   @"100", @"score", accessToken, @"access_token",
-                                   nil];
-    
-    NSString *urlString = [userId stringByAppendingString:[NSString stringWithFormat:@"/scores"]];
-    
-    NSLog(@"urlString: %@",urlString);
-    
-    
-    [FBRequestConnection startWithGraphPath:urlString
-                                 parameters:params
+    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
+                                 parameters:postParams
                                  HTTPMethod:@"POST"
                           completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
          if (result && !error) {
-             NSLog(@"data: %@",[result objectForKey:@"data"]);
-             int nCurrentScore = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] intValue];
-             NSLog(@"Current score is %d", nCurrentScore);
+             //confirm that score was submitted
          }
          else{
-             NSLog(error.description);
+             NSLog(@"%@",error.description);
          }
      }];
-}
-
-
--(void) setAccessToken{
     
-    NSLog(@"setAccessToken called");
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        
-        [FBSession openActiveSessionWithReadPermissions:@[@"publish_actions"]
-                                           allowLoginUI:NO
-                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-                                          accessToken = [[session accessTokenData] accessToken];
-                                      }];
-    }
-    else{
-        NSLog(@"Please log in to Facebook in order to post scores");
-    }
+    
 }
 
--(void) setUserID{
-    [FBRequestConnection startForMeWithCompletionHandler:
-     ^(FBRequestConnection *connection, id result, NSError *error)
-     {
-         NSLog(@"facebook result: %@", result);
-         NSLog(@"id: %@",[result objectForKey:@"id"]);
-         userId = (NSString*)[result objectForKey:@"id"] ;
+-(void) getCurrentScore{
+    NSMutableDictionary* getParams = [self fbParamsForRequestType:GET withOptionalScore:nil];
+    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
+                                 parameters:getParams
+                                 HTTPMethod:@"GET"
+                          completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         if (result && !error) {
+             double score = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] doubleValue];
+             NSLog(@"Current score is %f", score);
+             
+         }
+         else{
+             NSLog(@"%@",error.description);
+         }
      }];
-
+    //return score
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSMutableDictionary*) fbParamsForRequestType:(PGRequestType)type withOptionalScore:(NSString*) score{
+    NSMutableDictionary* params;
+    dataService =  [PGDataService sharedDataService];
+    NSString *accessToken = (NSString*)[dataService readProperty:@"fb_access_token"];
+    switch (type) {
+        case GET:
+            params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                     accessToken, @"access_token",
+                     nil];
+            break;
+        
+        case POST:
+            params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                      score, @"score", accessToken, @"access_token",
+                      nil];
+            break;
+    }
+    return params;
 }
-*/
+
+-(NSString *) urlStringForCurrentUser{
+    dataService =  [PGDataService sharedDataService];
+    NSString *userId = (NSString*)[dataService readProperty:@"fb_user_id"];
+    NSString *urlString = [userId stringByAppendingString:[NSString stringWithFormat:@"/scores"]];
+    return urlString;
+}
+
 
 @end

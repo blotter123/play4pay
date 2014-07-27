@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
-    kScoreTypeTime,
-    kScoreTypeRow
-} PGScoreType;
+
+typedef enum{
+    classic,
+    arcade,
+    zen
+}PGGameModeType;
+
 
 @protocol PGScoreDelegate <NSObject>
 
-- (void) completedWithScore:(float)score ofType:(PGScoreType)type;
+- (void) completedMode:(PGGameModeType) type withScore:(float)score;
 
 @end

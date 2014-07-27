@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC157C36198205AE007CA3C8 /* PGScoreCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = AC157C35198205AE007CA3C8 /* PGScoreCalculator.m */; };
 		AC2695241969952C0001EE62 /* PGMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2695231969952C0001EE62 /* PGMenuController.m */; };
+		AC88CD011985655400B7A768 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC88CD001985655400B7A768 /* data.plist */; };
+		AC88CD041985669F00B7A768 /* PGDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = AC88CD031985669F00B7A768 /* PGDataService.m */; };
 		AC9169EA1969F1FE0079BBBA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */; };
 		ACAE31D6196A1A8B0085D1FB /* PGScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */; };
 		D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */; };
@@ -43,8 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC157C34198205AE007CA3C8 /* PGScoreCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGScoreCalculator.h; sourceTree = "<group>"; };
+		AC157C35198205AE007CA3C8 /* PGScoreCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGScoreCalculator.m; sourceTree = "<group>"; };
 		AC2695221969952C0001EE62 /* PGMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMenuController.h; sourceTree = "<group>"; };
 		AC2695231969952C0001EE62 /* PGMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGMenuController.m; sourceTree = "<group>"; };
+		AC88CD001985655400B7A768 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		AC88CD021985669F00B7A768 /* PGDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGDataService.h; sourceTree = "<group>"; };
+		AC88CD031985669F00B7A768 /* PGDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGDataService.m; sourceTree = "<group>"; };
 		AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		ACAE31D4196A1A8B0085D1FB /* PGScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGScoreController.h; sourceTree = "<group>"; };
 		ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGScoreController.m; sourceTree = "<group>"; };
@@ -115,6 +123,10 @@
 				D41641DC1981EC460079844F /* PGScoreDelegate.h */,
 				ACAE31D4196A1A8B0085D1FB /* PGScoreController.h */,
 				ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */,
+				AC157C34198205AE007CA3C8 /* PGScoreCalculator.h */,
+				AC157C35198205AE007CA3C8 /* PGScoreCalculator.m */,
+				AC88CD021985669F00B7A768 /* PGDataService.h */,
+				AC88CD031985669F00B7A768 /* PGDataService.m */,
 			);
 			name = Scores;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 		D4ACAC961966601800182070 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AC88CD001985655400B7A768 /* data.plist */,
 				D4ACAC971966601800182070 /* Play4Pay-Info.plist */,
 				D4ACAC981966601800182070 /* InfoPlist.strings */,
 				D4ACAC9B1966601800182070 /* main.m */,
@@ -336,6 +349,7 @@
 			files = (
 				D4ACAC9A1966601800182070 /* InfoPlist.strings in Resources */,
 				D4ACACAD1966601800182070 /* Images.xcassets in Resources */,
+				AC88CD011985655400B7A768 /* data.plist in Resources */,
 				D4ACACA31966601800182070 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +376,8 @@
 				D4ACACA61966601800182070 /* PGViewController.m in Sources */,
 				D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */,
 				D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */,
+				AC157C36198205AE007CA3C8 /* PGScoreCalculator.m in Sources */,
+				AC88CD041985669F00B7A768 /* PGDataService.m in Sources */,
 				D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */,
 				D4ACACA01966601800182070 /* PGAppDelegate.m in Sources */,
 				ACAE31D6196A1A8B0085D1FB /* PGScoreController.m in Sources */,

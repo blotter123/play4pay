@@ -10,4 +10,11 @@
 
 @interface PGDataService : NSObject
 
++ (id)sharedDataService;
+
+-(void) writeProperty:(NSString*) propertyName withValue:(NSObject*) value;
+
+-(NSObject*) readProperty:(NSString*) propertyName;
+
+
 @end

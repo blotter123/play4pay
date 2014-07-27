@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PGScoreCalculator : NSObject
+#import "PGScoreDelegate.h"
+
+@interface PGScoreCalculator : NSObject<PGScoreDelegate>
+
+@property float pointsConstant;
+@property float highScore;
 
 @end
