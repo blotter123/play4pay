@@ -27,58 +27,59 @@ double pointsAvailable;
 
 
 #pragma mark PGScoreDelegate Implementation
-- (void) completedMode:(PGGameModeType) type withScore:(float)score{
-    double percentScore = 0.0f;
-    double currHighPercent = 0.0f;
+- (void) completedMode:(PGGameModeType) type withScore:(float)score andPlayingTime:(float)time{
+    float percentScore = 0.0f;
+    float currHighPercent = 0.0f;
 
     switch (type) {
         case classic:
-            currHighPercent = [self getDoubleForVariable:@"classic_high_percent"];
+            currHighPercent = [self getFloatForVariable:@"classic_high_percent"];
             //% for time is the LOWER_BOUND / score
             percentScore = RAW_CLASSIC_LOWER_TIME_BOUND/score;
             if (percentScore > currHighPercent) {
-                [self writeValue:percentScore ForVariable:@"classic_high_percent"];
+                [self writeValue:percentScore forVariable:@"classic_high_percent"];
             }else{
                 // define behavior
             }
             break;
             
         case arcade:
-            currHighPercent = [self getDoubleForVariable:@"arcade_high_percent"];
+            currHighPercent = [self getFloatForVariable:@"arcade_high_percent"];
             //% for distance is the score / UPPER_BOUND
             percentScore = score/RAW_ARCADE_UPPER_ROW_BOUND;
             if (percentScore > currHighPercent) {
-                [self writeValue:percentScore ForVariable:@"arcade_high_percent"];
+                [self writeValue:percentScore forVariable:@"arcade_high_percent"];
             }else{
                 // define behavior
             }
             break;
         
         case zen:
-            currHighPercent = [self getDoubleForVariable:@"zen_high_percent"];
+            currHighPercent = [self getFloatForVariable:@"zen_high_percent"];
             //% for distance is the score / UPPER_BOUND
             percentScore = score/RAW_ZEN_UPPER__ROW_BOUND;
             if (percentScore > currHighPercent) {
-                [self writeValue:percentScore ForVariable:@"zen_high_percent"];
+                [self writeValue:percentScore forVariable:@"zen_high_percent"];
                 [self calculateHighScore];
             }else{
                // define behavior
             }
             break;
     }
+    
 }
 
 #pragma mark Calculation Helper Methods
 
 - (void) calculateHighScore{
     
-    double classicHighPercent = [self getDoubleForVariable:@"classic_high_percent"];
-    double arcadeHighPercent = [self getDoubleForVariable:@"arcade_high_percent"];
-    double zenHighPercent = [self getDoubleForVariable:@"zen_high_percent"];
+    float classicHighPercent = [self getFloatForVariable:@"classic_high_percent"];
+    float arcadeHighPercent = [self getFloatForVariable:@"arcade_high_percent"];
+    float zenHighPercent = [self getFloatForVariable:@"zen_high_percent"];
     
     float percentSum = classicHighPercent + arcadeHighPercent + zenHighPercent;
     
-    pointsAvailable = (percentSum * POINT_SCALE_FACTOR) + [self getDoubleForVariable:@"points_constant"];
+    pointsAvailable = (percentSum * POINT_SCALE_FACTOR) + [self getFloatForVariable:@"points_constant"];
     
     float classicWeight = classicHighPercent / percentSum;
     float arcadeWeight = arcadeHighPercent /percentSum;
@@ -89,20 +90,28 @@ double pointsAvailable;
     float zenPoints = zenWeight * pointsAvailable;
 
     self.highScore = (classicWeight*classicPoints) + (arcadeWeight*arcadePoints) + (zenWeight*zenPoints);
-    [self writeValue:self.highScore ForVariable:@"high_score"];
+    [self writeValue:self.highScore forVariable:@"high_score"];
 }
 
--(double) getDoubleForVariable:(NSString*) variable{
+-(void) updatePlayingTime:(float) incrementTime{
+    float currentTime =[self getFloatForVariable:@"playing_time"];
+    float newTime = currentTime + incrementTime;
+    [self writeValue:newTime forVariable:@"playing_time"];
+}
+
+-(float) getFloatForVariable:(NSString*) variable{
     PGDataService* dataService = [PGDataService sharedDataService];
     NSNumber* variableNumber = (NSNumber*)[dataService readProperty:variable];
-    return [variableNumber doubleValue];
+    return [variableNumber floatValue];
 }
 
--(void) writeValue:(double) value ForVariable:(NSString*) variable{
+-(void) writeValue:(float) value forVariable:(NSString*) variable{
     PGDataService* dataService = [PGDataService sharedDataService];
-    NSNumber* variableNumber = [NSNumber numberWithDouble:value];
+    NSNumber* variableNumber = [NSNumber numberWithFloat:value];
     [dataService writeProperty:variable withValue:variableNumber];
 }
+
+
 
 
 @end

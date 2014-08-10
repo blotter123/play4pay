@@ -18,6 +18,6 @@ typedef enum{
 
 @protocol PGScoreDelegate <NSObject>
 
-- (void) completedMode:(PGGameModeType) type withScore:(float)score;
+- (void) completedMode:(PGGameModeType) type withScore:(float) score andPlayingTime:(float) time;
 
 @end

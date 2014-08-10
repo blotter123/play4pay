@@ -14,6 +14,8 @@
 	<integer>0</integer>
 	<key>fb_user_id</key>
 	<string></string>
+	<key>time_played</key>
+	<string></string>
 	<key>fb_access_token</key>
 	<string></string>
 </dict>
