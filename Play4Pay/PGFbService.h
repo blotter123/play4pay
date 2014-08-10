@@ -15,4 +15,8 @@
 
 - (void) postNewHighScore:(float) score;
 
+- (float) getCurrentHighScore;
+
+- (void) postAchievementForTime:(float) time;
+
 @end

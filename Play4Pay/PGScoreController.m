@@ -54,8 +54,72 @@ PGDataService *dataService;
     [self getCurrentScore];
 }
 
+- (IBAction)sendRequests:(id)sender {
+    [FBWebDialogs
+     presentRequestsDialogModallyWithSession:nil
+     message:@"Invite your friends to Play 4 Pay"
+     title:@"Friend Request"
+     parameters:nil
+     handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+         if (error) {
+             // Error launching the dialog or sending the request.
+             NSLog(@"Error sending request.");
+         } else {
+             if (result == FBWebDialogResultDialogNotCompleted) {
+                 // User clicked the "x" icon
+                 NSLog(@"User canceled request.");
+             } else {
+                 // Handle the send request callback
+                 NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                
+                 if (![urlParams valueForKey:@"request"]) {
+                     // User clicked the Cancel button
+                     NSLog(@"User canceled request.");
+                 } else {
+                     // User clicked the Send button
+                     NSString *requestID = [urlParams valueForKey:@"request"];
+                     NSLog(@"Request ID: %@", requestID);
+                     
+                     NSNumber *requestCount = [urlParams valueForKey:@"requestCount"];
+                     NSLog(@"Request Count: %@",requestCount);
+                     
+                     NSArray *requestIds = [urlParams valueForKey:@"requestIds"];
+                     NSLog(@"Request Count: %@",[requestIds firstObject]);
+                     
+                     
+                 }
+             }
+         }
+     }];
+}
 
-#pragma mark Facebook Scores API Methods
+
+
+#pragma mark Facebook Scores API & Helper Methods
+
+// request query is of form(without spaces_: "request=1499567556949993 & to5028959667=10152645333178659 & to5124443136=793054320726677"
+-(NSDictionary*) parseURLParams:(NSString*) requestQuery{
+    NSDictionary* urlParams = [[NSMutableDictionary alloc]init];
+    NSArray* requestToSplit = [requestQuery componentsSeparatedByString:@"&"];
+    NSString* requestObjectId = [[[requestToSplit firstObject]componentsSeparatedByString:@"="] objectAtIndex:1];
+    [urlParams setValue:requestObjectId forKey:@"request"];
+    
+    NSRange toRange;
+    toRange.location = 1;
+    toRange.length = [requestToSplit count]- 1;
+    NSArray* toArray = [requestToSplit subarrayWithRange:toRange];
+    NSUInteger requestCount = [toArray count];
+    [urlParams setValue:[NSNumber numberWithInteger:requestCount] forKey:@"requestCount"];
+    
+    NSMutableArray* userIds = [[NSMutableArray alloc]init];
+    [toArray enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop){
+        NSString* rawString = (NSString*) obj; // of the form to5028959667=10152645333178659
+        NSString* userId = [[rawString componentsSeparatedByString:@"="] objectAtIndex:1];
+        [userIds addObject:userId];
+    }];
+    [urlParams setValue:userIds forKey:@"requestIds"];
+    return urlParams;
+}
 
 -(void) sendScore:(NSString *) score{
 
