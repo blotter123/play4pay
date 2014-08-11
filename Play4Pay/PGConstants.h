@@ -19,7 +19,6 @@
 #define MANUAL_MOVEMENT_SPEED       0.000f
 #define AUTOMATIC_MOVEMENT_SPEED    1.125f
 
-
 // Scoring Constants
 
 #define RAW_CLASSIC_LOWER_TIME_BOUND    10.00f

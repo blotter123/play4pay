@@ -10,25 +10,22 @@
 
 @implementation PGDataService
 
+static PGDataService *sharedDS = nil;
 
 + (id)sharedDataService {
-    static PGDataService *sharedDS = nil;
-    @synchronized(self) {
-        if (sharedDS == nil)
-            sharedDS = [[self alloc] init];
-    }
+    if (sharedDS == nil)
+        sharedDS = [[PGDataService alloc] init];
     return sharedDS;
 }
 
-
--(void) writeProperty:(NSString*) propertyName withValue:(NSObject*) value{
+-(void) writeProperty:(NSString*) propertyName withValue:(NSObject*) value {
     NSString *path = [[NSBundle mainBundle] pathForResource: @"data" ofType: @"plist"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile: path];
     [dict setValue:value forKey:propertyName];
     [dict writeToFile:path atomically:YES];
 }
 
--(NSObject*) readProperty:(NSString*) propertyName{
+-(id) readProperty:(NSString*) propertyName {
     NSString *path = [[NSBundle mainBundle] pathForResource: @"data" ofType: @"plist"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile: path];
     return [dict objectForKey:propertyName];

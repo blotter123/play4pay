@@ -13,8 +13,6 @@
 + (id)sharedDataService;
 
 - (void) writeProperty:(NSString*) propertyName withValue:(NSObject*) value;
-
--(NSObject*) readProperty:(NSString*) propertyName;
-
+- (id) readProperty:(NSString*) propertyName;
 
 @end
