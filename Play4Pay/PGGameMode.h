@@ -17,5 +17,7 @@
 + (id<PGGameSceneDelegate>) gameModeWithDelegate:(id<PGScoreDelegate>)delegate;
 
 @property (nonatomic, strong) id<PGScoreDelegate> delegate;
+@property (nonatomic) NSInteger currentRow;
+@property (nonatomic) NSInteger randomIndex;
 
 @end

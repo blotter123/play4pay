@@ -15,12 +15,15 @@
 @property (nonatomic) NSInteger rowCount;
 @property (nonatomic) NSInteger rowIndex;
 
+@property (nonatomic) BOOL isRunning;
 @property (nonatomic) BOOL isDisabled;
 @property (nonatomic) BOOL contentCreated;
 @property (nonatomic, weak) SKLabelNode *welcomeNode;
 
 @property (nonatomic, strong) SKSpriteNode *gridContent;
 @property (nonatomic, strong) SKLabelNode *scoreLabel;
+
+@property (nonatomic) float lastPosition;
 
 @end
 
@@ -33,6 +36,8 @@
         self.rowIndex = 0;
         self.rowCount = 0;
         self.isDisabled = NO;
+        self.isRunning = NO;
+        self.lastPosition = -1.0f;
     }
     
     return self;
@@ -82,6 +87,25 @@
 }
 
 - (void) addRowAtIndex:(NSInteger)rowIndex {
+    
+    if (self.gameMode && [self.gameMode respondsToSelector:@selector(statusForIndexPath:)] && self.isRunning) {
+        
+        PGGameStatus status = [self.gameMode statusForIndexPath:[NSIndexPath indexPathForItem:-1 inSection:rowIndex]];
+
+        if (status == kGameStatusFailed) {
+            
+            //  Inform user about score
+            
+            NSString *score = [NSString stringWithFormat:@"Score: %d", self.rowIndex];
+            [[[UIAlertView alloc] initWithTitle:@"Complete" message:score delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            
+            //  Restart game
+            
+            [self setIsRunning:NO];
+            [self setIsDisabled:YES];
+            [self performSelector:@selector(resetGrid) withObject:nil afterDelay:0.75f];
+        }
+    }
     
     CGFloat width = self.size.width / TOTAL_COLUMNS,
     height = self.size.height / TOTAL_ROWS;
@@ -135,6 +159,7 @@
     [self setRowCount:0];
     [self setRowIndex:0];
     [self setIsDisabled:NO];
+    [self setLastPosition:-1.0f];
     
     //  Run scene setup
     
@@ -196,31 +221,89 @@
             
             if (status == kGameStatusFailed) {
                 
+                //  Stop game from running
+                
+                self.isRunning = NO;
+                
+                //  Alert node
+                
                 [(PGSpriteNode*)node alert];
                 [self setIsDisabled:YES];
                 [self performSelector:@selector(resetGrid) withObject:nil afterDelay:0.75f];
             }
             else if (status == kGameStatusValid) {
                 
+                //  Indicate that the game has started
+                
+                if (!self.isRunning)
+                    self.isRunning = YES;
+                
+                //  Highlight node
+                
                 [(PGSpriteNode*)node highlight];
-                [self moveToNextRow];
+                
+                if ([self.gameMode movementSpeed] <= 0.0f)
+                    [self moveToNextRow];
+            }
+            else if (status == kGameStatusComplete) {
+                
+                //  Stop game from running
+                
+                self.isRunning = NO;
+                
+                //  Inform user about score
+                
+                [[[UIAlertView alloc] initWithTitle:@"Complete" message:@"Success!!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
             }
         }
     }
 }
 
 - (void) update:(CFTimeInterval)currentTime {
+
+    //  Following implementation for timed modes only
     
-    if ([self.gameMode movementSpeed] > 0.0f) {
+    if (self.gameMode && [self.gameMode respondsToSelector:@selector(didTick:)] && self.isRunning) {
+       
+        PGGameStatus status = [self.gameMode didTick:currentTime];
+        if (status == kGameStatusComplete) {
+            
+            //  Stop game from running
+            
+            self.isRunning = NO;
+            
+            //  Inform user about score
+            
+            NSString *score = [NSString stringWithFormat:@"Score: %d", self.rowIndex];
+            [[[UIAlertView alloc] initWithTitle:@"Complete" message:score delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+            
+            //  Restart game
+            
+            [self setIsDisabled:YES];
+            [self performSelector:@selector(resetGrid) withObject:nil afterDelay:0.75f];
+        }
+    }
+    
+    //  Following implementation for automatic modes only
+    
+    if ([self.gameMode movementSpeed] > 0.0f && self.isRunning) {
         
         self.gridContent.position = CGPointMake(self.gridContent.position.x, self.gridContent.position.y - [self.gameMode movementSpeed]);
         
-        int topReached = (int)(self.gridContent.position.y) % (int)(self.size.height / TOTAL_ROWS);
-        
-        NSLog(@"VALUE: %d", topReached);
-        
-        if (topReached == 0)
+        if (self.lastPosition == -1.0f) {
             [self addRowOnTop];
+            self.lastPosition = 0.0f;
+        }
+        
+        self.lastPosition += [self.gameMode movementSpeed];
+        
+        float delta = fabs(self.lastPosition - 0.0f);
+        float rowHeight = (self.size.height / TOTAL_ROWS);
+        
+        if (delta >= rowHeight) {
+            self.lastPosition = 0.0f;
+            [self addRowOnTop];
+        }
     }
 }
 

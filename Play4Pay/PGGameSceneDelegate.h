@@ -25,4 +25,9 @@ typedef enum {
 - (UIColor*) colorAtIndexPath:(NSIndexPath*)indexPath;
 - (PGGameStatus) statusForNode:(PGSpriteNode*)node inRow:(NSInteger)row;
 
+@optional
+
+- (PGGameStatus) didTick:(double)tick;
+- (PGGameStatus) statusForIndexPath:(NSIndexPath*)indexPath;
+
 @end

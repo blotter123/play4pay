@@ -10,6 +10,4 @@
 
 @interface PGClassicGameMode : PGGameMode
 
-
-
 @end

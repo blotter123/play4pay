@@ -13,6 +13,8 @@
 #import "PGAppDelegate.h"
 #import "PGGameMode.h"
 #import "PGClassicGameMode.h"
+#import "PGArcadeGameMode.h"
+#import "PGZenGameMode.h"
 #import "PGDataService.h"
 
 @interface PGMenuController ()
@@ -200,12 +202,13 @@
     } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
         
         //change to Arcade mode
-        gameController.gameMode = [PGClassicGameMode gameMode];
+        gameController.gameMode = [PGArcadeGameMode gameMode];
         
         
     }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
+
         //change to Zen Mode for PGViewController
-        gameController.gameMode = [PGClassicGameMode gameMode];
+        gameController.gameMode = [PGZenGameMode gameMode];
     }
 }
 
