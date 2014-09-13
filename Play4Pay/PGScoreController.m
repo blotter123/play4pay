@@ -17,12 +17,11 @@
 typedef enum{
     GET,
     POST
-}PGRequestType;
+} PGRequestType;
 
 @end
 
 @implementation PGScoreController
-
 
 PGDataService *dataService;
 
@@ -49,12 +48,14 @@ PGDataService *dataService;
 
 
 - (IBAction) testSend:(id)sender {
+    
     NSString *score = [NSString stringWithFormat:@"%f",5.0];
     [self sendScore:score];
     [self getCurrentScore];
 }
 
 - (IBAction)sendRequests:(id)sender {
+    
     [FBWebDialogs
      presentRequestsDialogModallyWithSession:nil
      message:@"Invite your friends to Play 4 Pay"
@@ -85,20 +86,17 @@ PGDataService *dataService;
                      
                      NSArray *requestIds = [urlParams valueForKey:@"requestIds"];
                      NSLog(@"Request Count: %@",[requestIds firstObject]);
-                     
-                     
                  }
              }
          }
      }];
 }
 
-
-
 #pragma mark Facebook Scores API & Helper Methods
 
 // request query is of form(without spaces_: "request=1499567556949993 & to5028959667=10152645333178659 & to5124443136=793054320726677"
--(NSDictionary*) parseURLParams:(NSString*) requestQuery{
+- (NSDictionary*) parseURLParams:(NSString*) requestQuery {
+    
     NSDictionary* urlParams = [[NSMutableDictionary alloc]init];
     NSArray* requestToSplit = [requestQuery componentsSeparatedByString:@"&"];
     NSString* requestObjectId = [[[requestToSplit firstObject]componentsSeparatedByString:@"="] objectAtIndex:1];

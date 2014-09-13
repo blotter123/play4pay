@@ -1,25 +1,42 @@
 //
-//  PGClassicGameMode.m
+//  PGZenGameMode.m
 //  Play4Pay
 //
-//  Created by Julian Offermann on 7/6/14.
+//  Created by Julian Offermann on 8/30/14.
 //  Copyright (c) 2014 Play4Pay. All rights reserved.
 //
 
-#import "PGClassicGameMode.h"
+#import "PGZenGameMode.h"
 
-@implementation PGClassicGameMode
+@interface PGZenGameMode ()
+
+@property (nonatomic) NSInteger currentRow;
+@property (nonatomic) NSInteger randomIndex;
+
+@property (nonatomic) double firstTick;
+
+@end
+
+@implementation PGZenGameMode
 
 #pragma mark - Convenience Constructor
 
 + (id<PGGameSceneDelegate>) gameModeWithDelegate:(id<PGScoreDelegate>)delegate {
-    PGClassicGameMode *gameMode = [[PGClassicGameMode alloc] init];
+    PGZenGameMode *gameMode = [[PGZenGameMode alloc] init];
     gameMode.delegate = delegate;
     return gameMode;
 }
 
 + (id<PGGameSceneDelegate>) gameMode {
-    return [[PGClassicGameMode alloc] init];
+    return [[PGZenGameMode alloc] init];
+}
+
+- (id) init {
+    self = [super init];
+    if (self) {
+        self.firstTick = -1;
+    }
+    return self;
 }
 
 #pragma mark - Game Scene Delegate Implementation
@@ -47,8 +64,6 @@
     
     if (indexPath.section == 0)
         return INACTIVE_COLOR;
-    else if (indexPath.section >= 50)
-        return COMPLETE_COLOR;
     else {
         
         if (indexPath.item == self.randomIndex)
@@ -62,15 +77,31 @@
     
     if (row == 0)
         return kGameStatusInvalid;
-    else if (row == 50 && [node isHot])
-        return kGameStatusComplete;
     else {
         
         if ([node isHot])
             return kGameStatusValid;
         
+        //  Reset tick
+        self.firstTick = -1;
+        
         return kGameStatusFailed;
     }
+}
+
+- (PGGameStatus) didTick:(double)tick
+{
+    if (self.firstTick == -1)
+        self.firstTick = tick;
+    
+    NSLog(@"delta %f", fabs(self.firstTick - tick));
+    
+    if (fabs(self.firstTick - tick) >= 10.0f) {
+        self.firstTick = -1;
+        return kGameStatusComplete;
+    }
+    
+    return kGameStatusInvalid;
 }
 
 @end

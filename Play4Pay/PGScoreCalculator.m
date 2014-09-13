@@ -32,7 +32,7 @@ double pointsAvailable;
     float currHighPercent = 0.0f;
 
     switch (type) {
-        case classic:
+        case kGameModeTypeClassic:
             currHighPercent = [self getFloatForVariable:@"classic_high_percent"];
             //% for time is the LOWER_BOUND / score
             percentScore = RAW_CLASSIC_LOWER_TIME_BOUND/score;
@@ -43,7 +43,7 @@ double pointsAvailable;
             }
             break;
             
-        case arcade:
+        case kGameModeTypeArcade:
             currHighPercent = [self getFloatForVariable:@"arcade_high_percent"];
             //% for distance is the score / UPPER_BOUND
             percentScore = score/RAW_ARCADE_UPPER_ROW_BOUND;
@@ -54,7 +54,7 @@ double pointsAvailable;
             }
             break;
         
-        case zen:
+        case kGameModeTypeZen:
             currHighPercent = [self getFloatForVariable:@"zen_high_percent"];
             //% for distance is the score / UPPER_BOUND
             percentScore = score/RAW_ZEN_UPPER__ROW_BOUND;

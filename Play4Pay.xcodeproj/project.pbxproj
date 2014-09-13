@@ -14,6 +14,8 @@
 		AC9169EA1969F1FE0079BBBA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */; };
 		AC92BB811996EB9300151644 /* PGFbService.m in Sources */ = {isa = PBXBuildFile; fileRef = AC92BB801996EB9300151644 /* PGFbService.m */; };
 		ACAE31D6196A1A8B0085D1FB /* PGScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */; };
+		D46CBA5A19B18992005D0BBB /* PGArcadeGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */; };
+		D46CBA5D19B189A1005D0BBB /* PGZenGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5C19B189A1005D0BBB /* PGZenGameMode.m */; };
 		D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */; };
 		D4741CD21969F34E00A6B7A3 /* PGGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CD01969F34E00A6B7A3 /* PGGameMode.m */; };
 		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
@@ -60,6 +62,10 @@
 		ACAE31D4196A1A8B0085D1FB /* PGScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGScoreController.h; sourceTree = "<group>"; };
 		ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGScoreController.m; sourceTree = "<group>"; };
 		D41641DC1981EC460079844F /* PGScoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGScoreDelegate.h; sourceTree = "<group>"; };
+		D46CBA5819B18992005D0BBB /* PGArcadeGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGArcadeGameMode.h; sourceTree = "<group>"; };
+		D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGArcadeGameMode.m; sourceTree = "<group>"; };
+		D46CBA5B19B189A1005D0BBB /* PGZenGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGZenGameMode.h; sourceTree = "<group>"; };
+		D46CBA5C19B189A1005D0BBB /* PGZenGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGZenGameMode.m; sourceTree = "<group>"; };
 		D4741CCD1969F34E00A6B7A3 /* PGClassicGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGClassicGameMode.h; sourceTree = "<group>"; };
 		D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGClassicGameMode.m; sourceTree = "<group>"; };
 		D4741CCF1969F34E00A6B7A3 /* PGGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGameMode.h; sourceTree = "<group>"; };
@@ -152,6 +158,10 @@
 				D4741CD01969F34E00A6B7A3 /* PGGameMode.m */,
 				D4741CCD1969F34E00A6B7A3 /* PGClassicGameMode.h */,
 				D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */,
+				D46CBA5819B18992005D0BBB /* PGArcadeGameMode.h */,
+				D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */,
+				D46CBA5B19B189A1005D0BBB /* PGZenGameMode.h */,
+				D46CBA5C19B189A1005D0BBB /* PGZenGameMode.m */,
 				D4741CD4196A0C6500A6B7A3 /* PGGameSceneDelegate.h */,
 			);
 			name = "Game Modes";
@@ -375,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC2695241969952C0001EE62 /* PGMenuController.m in Sources */,
+				D46CBA5A19B18992005D0BBB /* PGArcadeGameMode.m in Sources */,
 				D4ACAC9C1966601800182070 /* main.m in Sources */,
 				D4ACACA91966601800182070 /* PGMainScene.m in Sources */,
 				D4741CD21969F34E00A6B7A3 /* PGGameMode.m in Sources */,
@@ -387,6 +398,7 @@
 				D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */,
 				D4ACACA01966601800182070 /* PGAppDelegate.m in Sources */,
 				ACAE31D6196A1A8B0085D1FB /* PGScoreController.m in Sources */,
+				D46CBA5D19B189A1005D0BBB /* PGZenGameMode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

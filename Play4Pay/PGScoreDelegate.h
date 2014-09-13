@@ -10,9 +10,9 @@
 
 
 typedef enum{
-    classic,
-    arcade,
-    zen
+    kGameModeTypeClassic,
+    kGameModeTypeArcade,
+    kGameModeTypeZen
 }PGGameModeType;
 
 

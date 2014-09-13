@@ -11,6 +11,8 @@
 
 @interface PGFbService()
 
+@property (nonatomic, strong) PGDataService *dataService;
+
 typedef enum{
     GET,
     POST
@@ -20,14 +22,11 @@ typedef enum{
 
 @implementation PGFbService
 
-PGDataService *dataService;
+static PGFbService *sharedDS = nil;
 
 + (id)sharedFbService {
-    static PGFbService *sharedDS = nil;
-    @synchronized(self) {
-        if (sharedDS == nil)
-            sharedDS = [[self alloc] init];
-    }
+    if (sharedDS == nil)
+        sharedDS = [[PGFbService alloc] init];
     return sharedDS;
 }
 
@@ -35,7 +34,7 @@ PGDataService *dataService;
     
     NSString *scoreString = [NSString stringWithFormat:@"%f",score];
     
-    NSMutableDictionary* postParams = [self fbParamsForRequestType:POST withOptionalScore:scoreString];
+    NSDictionary* postParams = [self fbParamsForRequestType:POST withOptionalScore:scoreString];
     //check that params are filled
     
     [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
@@ -53,14 +52,14 @@ PGDataService *dataService;
 }
 
 -(float) getCurrentHighScore{
+    
     float highScore = 0.0f;
-    NSMutableDictionary* getParams = [self fbParamsForRequestType:GET withOptionalScore:nil];
-    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
-                                 parameters:getParams
-                                 HTTPMethod:@"GET"
-                          completionHandler:
-     ^(FBRequestConnection *connection, id result, NSError *error) {
-         if (result && !error) {
+    
+    NSDictionary* getParams = [self fbParamsForRequestType:GET withOptionalScore:nil];
+    
+    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser] parameters:getParams HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        
+        if (result && !error) {
              float score = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] floatValue];
              NSLog(@"Current score is %f", score);
          }
@@ -71,29 +70,25 @@ PGDataService *dataService;
     return highScore;
 }
 
--(NSMutableDictionary*) fbParamsForRequestType:(PGRequestType)type withOptionalScore:(NSString*) score{
-    NSMutableDictionary* params;
-    dataService =  [PGDataService sharedDataService];
-    NSString *accessToken = (NSString*)[dataService readProperty:@"fb_access_token"];
+-(NSDictionary*) fbParamsForRequestType:(PGRequestType)type withOptionalScore:(NSString*) score{
+    NSDictionary* params;
+    self.dataService =  [PGDataService sharedDataService];
+    NSString *accessToken = [self.dataService readProperty:@"fb_access_token"];
     switch (type) {
         case GET:
-            params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                      accessToken, @"access_token",
-                      nil];
+            params = @{ @"access_token": accessToken };
             break;
             
         case POST:
-            params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                      score, @"score", accessToken, @"access_token",
-                      nil];
+            params = @{ @"score": score, @"access_token": accessToken };
             break;
     }
     return params;
 }
 
 -(NSString *) urlStringForCurrentUser{
-    dataService =  [PGDataService sharedDataService];
-    NSString *userId = (NSString*)[dataService readProperty:@"fb_user_id"];
+    self.dataService =  [PGDataService sharedDataService];
+    NSString *userId = [self.dataService readProperty:@"fb_user_id"];
     NSString *urlString = [userId stringByAppendingString:[NSString stringWithFormat:@"/scores"]];
     return urlString;
 }
@@ -101,7 +96,5 @@ PGDataService *dataService;
 - (void) postAchievementForTime:(float) time{
     
 }
-
-
 
 @end

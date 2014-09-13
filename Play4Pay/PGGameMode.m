@@ -32,4 +32,22 @@
     return 0.0f;
 }
 
+- (UIColor*) colorAtIndexPath:(NSIndexPath*)indexPath {
+    
+    if (self.currentRow != indexPath.section) {
+        self.randomIndex = arc4random() % TOTAL_COLUMNS;
+        self.currentRow = indexPath.section;
+    }
+    
+    if (indexPath.section == 0)
+        return INACTIVE_COLOR;
+    else {
+        
+        if (indexPath.item == self.randomIndex)
+            return PRIMARY_COLOR;
+        
+        return SECONDARY_COLOR;
+    }
+}
+
 @end
