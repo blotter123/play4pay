@@ -10,6 +10,7 @@
 
 #import "FlurryAdDelegate.h"
 #import "FlurryAds.h"
+#import "Flurry.h"
 
 #import "PGMenuController.h"
 #import "PGViewController.h"
@@ -123,10 +124,9 @@
          ^(FBRequestConnection *connection, id result, NSError *error)
          {
              NSString* userId = (NSString*)[result objectForKey:@"id"] ;
+             NSString* gender = (NSString*)[result objectForKey:@"gender"];
+             [Flurry setGender:[gender substringToIndex:1]];
              [dataService writeProperty:@"fb_user_id" withValue:userId];
-             NSLog(@"read fb user id after login: %@",[dataService readProperty:@"fb_user_id"]);
-             NSLog(@"read fb access token after login: %@",[dataService readProperty:@"fb_access_token"]);
-             
          }];
         
         return;
