@@ -54,6 +54,7 @@ double pointsAvailable;
             }else{
                 [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
             }
+            [Flurry logEvent:@"completed_classic_game_mode" withParameters:modeCompletionParams];
             break;
             
         case kGameModeTypeArcade:
@@ -69,6 +70,7 @@ double pointsAvailable;
             }else{
                 [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
             }
+            [Flurry logEvent:@"completed_arcade_game_mode" withParameters:modeCompletionParams];
             break;
         
         case kGameModeTypeZen:
@@ -84,9 +86,9 @@ double pointsAvailable;
             }else{
                [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
             }
+            [Flurry logEvent:@"completed_zen_game_mode" withParameters:modeCompletionParams];
             break;
     }
-    [Flurry logEvent:@"completed_mode" withParameters:modeCompletionParams];
     
 }
 

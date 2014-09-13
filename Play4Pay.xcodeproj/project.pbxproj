@@ -22,6 +22,7 @@
 		ACD88F0919C4948B00D0C896 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0819C4948B00D0C896 /* StoreKit.framework */; };
 		ACD88F0B19C4949B00D0C896 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0A19C4949B00D0C896 /* SystemConfiguration.framework */; };
 		ACD88F0D19C494B300D0C896 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0C19C494B300D0C896 /* libz.dylib */; };
+		ACD88F0F19C4F4DF00D0C896 /* sessions.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACD88F0E19C4F4DF00D0C896 /* sessions.plist */; };
 		D46CBA5A19B18992005D0BBB /* PGArcadeGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */; };
 		D46CBA5D19B189A1005D0BBB /* PGZenGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5C19B189A1005D0BBB /* PGZenGameMode.m */; };
 		D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */; };
@@ -80,6 +81,7 @@
 		ACD88F0819C4948B00D0C896 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		ACD88F0A19C4949B00D0C896 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		ACD88F0C19C494B300D0C896 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		ACD88F0E19C4F4DF00D0C896 /* sessions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sessions.plist; sourceTree = "<group>"; };
 		D41641DC1981EC460079844F /* PGScoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGScoreDelegate.h; sourceTree = "<group>"; };
 		D46CBA5819B18992005D0BBB /* PGArcadeGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGArcadeGameMode.h; sourceTree = "<group>"; };
 		D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGArcadeGameMode.m; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				D4ACAC981966601800182070 /* InfoPlist.strings */,
 				D4ACAC9B1966601800182070 /* main.m */,
 				D4ACAC9D1966601800182070 /* Play4Pay-Prefix.pch */,
+				ACD88F0E19C4F4DF00D0C896 /* sessions.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			files = (
 				D4ACAC9A1966601800182070 /* InfoPlist.strings in Resources */,
 				D4ACACAD1966601800182070 /* Images.xcassets in Resources */,
+				ACD88F0F19C4F4DF00D0C896 /* sessions.plist in Resources */,
 				AC88CD011985655400B7A768 /* data.plist in Resources */,
 				D4ACACA31966601800182070 /* Main.storyboard in Resources */,
 			);

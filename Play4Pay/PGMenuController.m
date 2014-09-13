@@ -214,23 +214,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
-    
-    
     PGViewController *gameController = segue.destinationViewController;
-    NSMutableDictionary *gameModeParams = [NSMutableDictionary dictionary];
+    
     if ([segue.identifier isEqualToString:@"ClassicMode"]) {
         gameController.gameMode = [PGClassicGameMode gameMode];
-        [gameModeParams setValue:@"classic" forKey:@"game_mode"];
+        [Flurry logEvent:@"started_classic_game_mode"];
         
     } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
         gameController.gameMode = [PGArcadeGameMode gameMode];
-        [gameModeParams setValue:@"arcade" forKey:@"game_mode"];
+        [Flurry logEvent:@"started_arcade_game_mode"];
         
     }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
         gameController.gameMode = [PGZenGameMode gameMode];
-        [gameModeParams setValue:@"zen" forKey:@"game_mode"];
+        [Flurry logEvent:@"started_zen_game_mode"];
     }
-    //[Flurry logEvent:@"started_game_play" withParameters:gameModeParams];
 }
 
 
