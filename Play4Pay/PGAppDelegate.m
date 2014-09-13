@@ -18,7 +18,7 @@
     [application setStatusBarHidden:YES];
     
     //Flurry Initialization
-    [Flurry setCrashReportingEnabled:YES];
+    //[Flurry setCrashReportingEnabled:YES];
     [Flurry startSession:@"P3K4MKVDNK3XG4VY62KQ"];
     [FlurryAds initialize:self.window.rootViewController];
     //Enable TestAds <-- needs to be removed before release

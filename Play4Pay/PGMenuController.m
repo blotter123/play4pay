@@ -23,11 +23,15 @@
 
 @interface PGMenuController ()
 
+@property (nonatomic, strong) PGDataService *dataService;
+
 @property bool initFb;
 
 @end
 
 @implementation PGMenuController
+
+
 
 
 
@@ -180,7 +184,11 @@
 - (void)userLoggedOut
 {
     [self.fbLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
-    [self showMessage:@"You're now logged out" withTitle:@""];
+    [self showMessage:@"Scores will not be posted to Facebook when you are logged out!" withTitle:@"You're now logged out"];
+    // remove fb credentials from plist
+    self.dataService = [PGDataService sharedDataService];
+    [self.dataService writeProperty:@"fb_user_id" withValue:@""];
+    [self.dataService writeProperty:@"fb_access_token" withValue:@""];
 }
 
 - (void)userLoggedIn

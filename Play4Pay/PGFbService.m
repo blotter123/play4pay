@@ -34,46 +34,70 @@ static PGFbService *sharedDS = nil;
     
     NSString *scoreString = [NSString stringWithFormat:@"%f",score];
     
-    NSDictionary* postParams = [self fbParamsForRequestType:POST withOptionalScore:scoreString];
-    //check that params are filled
-    
-    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
-                                 parameters:postParams
-                                 HTTPMethod:@"POST"
-                          completionHandler:
-     ^(FBRequestConnection *connection, id result, NSError *error) {
-         if (result && !error) {
-             //confirm that score was submitted
-         }
-         else{
-             NSLog(@"%@",error.description);
-         }
-     }];
+    @try {
+        NSDictionary* postParams = [self fbParamsForRequestType:POST withOptionalScore:scoreString];
+        NSString* urlString = [self urlStringForCurrentUser];
+        
+        [FBRequestConnection startWithGraphPath:urlString
+                                     parameters:postParams
+                                     HTTPMethod:@"POST"
+                              completionHandler:
+         ^(FBRequestConnection *connection, id result, NSError *error) {
+             if (result && !error) {
+                 //confirm that score was submitted
+             }
+             else{
+                 NSLog(@"%@",error.description);
+             }
+         }];
+    }
+    @catch (NSException *e) {
+        NSLog(@"%@",[e reason]);
+    }
 }
 
 -(float) getCurrentHighScore{
     
     float highScore = 0.0f;
     
-    NSDictionary* getParams = [self fbParamsForRequestType:GET withOptionalScore:nil];
     
-    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser] parameters:getParams HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    @try {
+        NSDictionary* getParams = [self fbParamsForRequestType:GET withOptionalScore:nil];
+        NSString* urlString = [self urlStringForCurrentUser];
         
-        if (result && !error) {
-             float score = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] floatValue];
-             NSLog(@"Current score is %f", score);
-         }
-         else{
-             NSLog(@"%@",error.description);
-         }
-     }];
-    return highScore;
+        [FBRequestConnection startWithGraphPath:urlString parameters:getParams HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            
+            if (result && !error) {
+                float score = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] floatValue];
+                NSLog(@"Current score is %f", score);
+            }
+            else{
+                NSLog(@"%@",error.description);
+            }
+        }];
+        
+    }
+    @catch (NSException *e) {
+        NSLog(@"%@",[e reason]);
+    }
+    @finally {
+            return highScore;
+    }
+
 }
 
 -(NSDictionary*) fbParamsForRequestType:(PGRequestType)type withOptionalScore:(NSString*) score{
     NSDictionary* params;
     self.dataService =  [PGDataService sharedDataService];
     NSString *accessToken = [self.dataService readProperty:@"fb_access_token"];
+    if ([accessToken length] == 0) {
+        //no current userid in data service (user logged out)
+        NSException* noAccessTokenException = [NSException
+                                          exceptionWithName:@"UserLoggedOutException"
+                                          reason:@"no current fb_access_token found"
+                                          userInfo:nil];
+        [noAccessTokenException raise];
+    }
     switch (type) {
         case GET:
             params = @{ @"access_token": accessToken };
@@ -89,6 +113,14 @@ static PGFbService *sharedDS = nil;
 -(NSString *) urlStringForCurrentUser{
     self.dataService =  [PGDataService sharedDataService];
     NSString *userId = [self.dataService readProperty:@"fb_user_id"];
+    if ([userId length] == 0) {
+        //no current userid in data service (user logged out)
+        NSException* noUserIdException = [NSException
+                                    exceptionWithName:@"UserLoggedOutException"
+                                    reason:@"no current fb_user_id found"
+                                    userInfo:nil];
+        [noUserIdException raise];
+    }
     NSString *urlString = [userId stringByAppendingString:[NSString stringWithFormat:@"/scores"]];
     return urlString;
 }

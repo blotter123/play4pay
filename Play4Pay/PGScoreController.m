@@ -12,6 +12,7 @@
 
 #import "PGScoreController.h"
 #import "PGDataService.h"
+#import "PGFbService.h"
 
 
 @interface PGScoreController ()
@@ -26,6 +27,8 @@ typedef enum{
 @implementation PGScoreController
 
 PGDataService *dataService;
+PGFbService *fbService;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,9 +54,9 @@ PGDataService *dataService;
 
 - (IBAction) testSend:(id)sender {
     
-    NSString *score = [NSString stringWithFormat:@"%f",5.0];
-    [self sendScore:score];
-    [self getCurrentScore];
+    fbService = [PGFbService sharedFbService];
+    [fbService postNewHighScore:5.0];
+    [fbService getCurrentHighScore];
 }
 
 - (IBAction)sendRequests:(id)sender {
@@ -125,45 +128,6 @@ PGDataService *dataService;
     }];
     [urlParams setValue:userIds forKey:@"requestIds"];
     return urlParams;
-}
-
--(void) sendScore:(NSString *) score{
-
-    NSMutableDictionary* postParams = [self fbParamsForRequestType:POST withOptionalScore:score];
-    
-    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
-                                 parameters:postParams
-                                 HTTPMethod:@"POST"
-                          completionHandler:
-     ^(FBRequestConnection *connection, id result, NSError *error) {
-         if (result && !error) {
-             //confirm that score was submitted
-         }
-         else{
-             NSLog(@"%@",error.description);
-         }
-     }];
-    
-    
-}
-
--(void) getCurrentScore{
-    NSMutableDictionary* getParams = [self fbParamsForRequestType:GET withOptionalScore:nil];
-    [FBRequestConnection startWithGraphPath:[self urlStringForCurrentUser]
-                                 parameters:getParams
-                                 HTTPMethod:@"GET"
-                          completionHandler:
-     ^(FBRequestConnection *connection, id result, NSError *error) {
-         if (result && !error) {
-             double score = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] doubleValue];
-             NSLog(@"Current score is %f", score);
-             
-         }
-         else{
-             NSLog(@"%@",error.description);
-         }
-     }];
-    //return score
 }
 
 -(NSMutableDictionary*) fbParamsForRequestType:(PGRequestType)type withOptionalScore:(NSString*) score{
