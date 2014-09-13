@@ -8,6 +8,9 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 
+#import "FlurryAdDelegate.h"
+#import "FlurryAds.h"
+
 #import "PGMenuController.h"
 #import "PGViewController.h"
 #import "PGAppDelegate.h"
@@ -59,6 +62,18 @@
         [self initFbSession];
         self.initFb = YES;
     }
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [FlurryAds setAdDelegate:self];
+    [FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
+}
+
+-(void) viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [FlurryAds removeAdFromSpace:@"test_banner"];
+    [FlurryAds setAdDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning

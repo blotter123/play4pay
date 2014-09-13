@@ -7,6 +7,8 @@
 //
 
 #import "PGAppDelegate.h"
+#import "Flurry.h"
+#import "FlurryAds.h"
 
 
 @implementation PGAppDelegate
@@ -15,7 +17,11 @@
 {
     [application setStatusBarHidden:YES];
     
-       return YES;
+    //Flurry Initialization
+    [Flurry startSession:@"P3K4MKVDNK3XG4VY62KQ"];
+    [FlurryAds initialize:self.window.rootViewController];
+    
+    return YES;
 }
 
 
