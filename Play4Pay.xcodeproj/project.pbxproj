@@ -14,6 +14,14 @@
 		AC9169EA1969F1FE0079BBBA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */; };
 		AC92BB811996EB9300151644 /* PGFbService.m in Sources */ = {isa = PBXBuildFile; fileRef = AC92BB801996EB9300151644 /* PGFbService.m */; };
 		ACAE31D6196A1A8B0085D1FB /* PGScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */; };
+		ACD88EFC19C493E500D0C896 /* libFlurry_5.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88EFB19C493E400D0C896 /* libFlurry_5.3.0.a */; };
+		ACD88F0119C493F200D0C896 /* libFlurryAds_5.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0019C493F200D0C896 /* libFlurryAds_5.3.0.a */; };
+		ACD88F0319C4944600D0C896 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0219C4944600D0C896 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		ACD88F0519C4946800D0C896 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0419C4946800D0C896 /* MediaPlayer.framework */; };
+		ACD88F0719C4947300D0C896 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0619C4947300D0C896 /* Security.framework */; };
+		ACD88F0919C4948B00D0C896 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0819C4948B00D0C896 /* StoreKit.framework */; };
+		ACD88F0B19C4949B00D0C896 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0A19C4949B00D0C896 /* SystemConfiguration.framework */; };
+		ACD88F0D19C494B300D0C896 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD88F0C19C494B300D0C896 /* libz.dylib */; };
 		D46CBA5A19B18992005D0BBB /* PGArcadeGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */; };
 		D46CBA5D19B189A1005D0BBB /* PGZenGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5C19B189A1005D0BBB /* PGZenGameMode.m */; };
 		D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */; };
@@ -61,6 +69,17 @@
 		AC92BB801996EB9300151644 /* PGFbService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGFbService.m; sourceTree = "<group>"; };
 		ACAE31D4196A1A8B0085D1FB /* PGScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGScoreController.h; sourceTree = "<group>"; };
 		ACAE31D5196A1A8B0085D1FB /* PGScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGScoreController.m; sourceTree = "<group>"; };
+		ACD88EFA19C493E400D0C896 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		ACD88EFB19C493E400D0C896 /* libFlurry_5.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.3.0.a; sourceTree = "<group>"; };
+		ACD88EFE19C493F200D0C896 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
+		ACD88EFF19C493F200D0C896 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
+		ACD88F0019C493F200D0C896 /* libFlurryAds_5.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_5.3.0.a; sourceTree = "<group>"; };
+		ACD88F0219C4944600D0C896 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		ACD88F0419C4946800D0C896 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		ACD88F0619C4947300D0C896 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		ACD88F0819C4948B00D0C896 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		ACD88F0A19C4949B00D0C896 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ACD88F0C19C494B300D0C896 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D41641DC1981EC460079844F /* PGScoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGScoreDelegate.h; sourceTree = "<group>"; };
 		D46CBA5819B18992005D0BBB /* PGArcadeGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGArcadeGameMode.h; sourceTree = "<group>"; };
 		D46CBA5919B18992005D0BBB /* PGArcadeGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGArcadeGameMode.m; sourceTree = "<group>"; };
@@ -105,11 +124,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD88F0D19C494B300D0C896 /* libz.dylib in Frameworks */,
+				ACD88F0B19C4949B00D0C896 /* SystemConfiguration.framework in Frameworks */,
+				ACD88F0919C4948B00D0C896 /* StoreKit.framework in Frameworks */,
+				ACD88F0719C4947300D0C896 /* Security.framework in Frameworks */,
+				ACD88F0519C4946800D0C896 /* MediaPlayer.framework in Frameworks */,
+				ACD88F0319C4944600D0C896 /* AdSupport.framework in Frameworks */,
 				D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */,
 				AC9169EA1969F1FE0079BBBA /* FacebookSDK.framework in Frameworks */,
+				ACD88EFC19C493E500D0C896 /* libFlurry_5.3.0.a in Frameworks */,
 				D4ACAC921966601800182070 /* UIKit.framework in Frameworks */,
 				D4ACAC941966601800182070 /* SpriteKit.framework in Frameworks */,
 				D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */,
+				ACD88F0119C493F200D0C896 /* libFlurryAds_5.3.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +178,25 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		ACD88EF919C493E400D0C896 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				ACD88EFA19C493E400D0C896 /* Flurry.h */,
+				ACD88EFB19C493E400D0C896 /* libFlurry_5.3.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
+		ACD88EFD19C493F200D0C896 /* FlurryAds */ = {
+			isa = PBXGroup;
+			children = (
+				ACD88EFE19C493F200D0C896 /* FlurryAdDelegate.h */,
+				ACD88EFF19C493F200D0C896 /* FlurryAds.h */,
+				ACD88F0019C493F200D0C896 /* libFlurryAds_5.3.0.a */,
+			);
+			path = FlurryAds;
+			sourceTree = "<group>";
+		};
 		D4741CD31969F35300A6B7A3 /* Game Modes */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +216,8 @@
 		D4ACAC811966601800182070 = {
 			isa = PBXGroup;
 			children = (
+				ACD88EFD19C493F200D0C896 /* FlurryAds */,
+				ACD88EF919C493E400D0C896 /* Flurry */,
 				D4ACAC951966601800182070 /* Play4Pay */,
 				D4ACACB91966601800182070 /* Play4PayTests */,
 				D4ACAC8C1966601800182070 /* Frameworks */,
@@ -189,6 +237,12 @@
 		D4ACAC8C1966601800182070 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACD88F0C19C494B300D0C896 /* libz.dylib */,
+				ACD88F0A19C4949B00D0C896 /* SystemConfiguration.framework */,
+				ACD88F0819C4948B00D0C896 /* StoreKit.framework */,
+				ACD88F0619C4947300D0C896 /* Security.framework */,
+				ACD88F0419C4946800D0C896 /* MediaPlayer.framework */,
+				ACD88F0219C4944600D0C896 /* AdSupport.framework */,
 				AC9169E91969F1FE0079BBBA /* FacebookSDK.framework */,
 				D4ACAC8D1966601800182070 /* Foundation.framework */,
 				D4ACAC8F1966601800182070 /* CoreGraphics.framework */,
@@ -530,6 +584,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
 				INFOPLIST_FILE = "Play4Pay/Play4Pay-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Flurry",
+					"$(PROJECT_DIR)/FlurryAds",
+				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -549,6 +608,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Play4Pay/Play4Pay-Prefix.pch";
 				INFOPLIST_FILE = "Play4Pay/Play4Pay-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Flurry",
+					"$(PROJECT_DIR)/FlurryAds",
+				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
