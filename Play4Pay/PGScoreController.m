@@ -8,6 +8,8 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 
+#import "Flurry.h"
+
 #import "PGScoreController.h"
 #import "PGDataService.h"
 
@@ -86,6 +88,12 @@ PGDataService *dataService;
                      
                      NSArray *requestIds = [urlParams valueForKey:@"requestIds"];
                      NSLog(@"Request Count: %@",[requestIds firstObject]);
+                     
+                     NSDictionary *fbRequestParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                      [requestCount stringValue], @"request_count",
+                                                      nil];
+                     [Flurry logEvent:@"fb_friend_request" withParameters:fbRequestParams];
+                     
                  }
              }
          }

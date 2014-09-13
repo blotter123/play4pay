@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Play4Pay. All rights reserved.
 //
 
+#import "Flurry.h"
+
 #import "PGScoreCalculator.h"
 #import "PGDataService.h"
 
@@ -28,6 +30,13 @@ double pointsAvailable;
 
 #pragma mark PGScoreDelegate Implementation
 - (void) completedMode:(PGGameModeType) type withScore:(float)score andPlayingTime:(float)time{
+    NSMutableDictionary *modeCompletionParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                          [self gameModeToString:type], @"game_mode",
+                                          [NSString stringWithFormat:@"%f", score], @"score",
+                                          [NSString stringWithFormat:@"%f", time], @"playing_time",
+                                          nil];
+    
+    
     float percentScore = 0.0f;
     float currHighPercent = 0.0f;
 
@@ -38,8 +47,12 @@ double pointsAvailable;
             percentScore = RAW_CLASSIC_LOWER_TIME_BOUND/score;
             if (percentScore > currHighPercent) {
                 [self writeValue:percentScore forVariable:@"classic_high_percent"];
+                
+                [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
+                [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+                
             }else{
-                // define behavior
+                [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
             }
             break;
             
@@ -49,8 +62,12 @@ double pointsAvailable;
             percentScore = score/RAW_ARCADE_UPPER_ROW_BOUND;
             if (percentScore > currHighPercent) {
                 [self writeValue:percentScore forVariable:@"arcade_high_percent"];
+                
+                [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
+                [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+                
             }else{
-                // define behavior
+                [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
             }
             break;
         
@@ -60,18 +77,22 @@ double pointsAvailable;
             percentScore = score/RAW_ZEN_UPPER__ROW_BOUND;
             if (percentScore > currHighPercent) {
                 [self writeValue:percentScore forVariable:@"zen_high_percent"];
-                [self calculateHighScore];
+                
+                [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
+                [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+                
             }else{
-               // define behavior
+               [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
             }
             break;
     }
+    [Flurry logEvent:@"completed_mode" withParameters:modeCompletionParams];
     
 }
 
 #pragma mark Calculation Helper Methods
 
-- (void) calculateHighScore{
+- (float) calculateHighScore{
     
     float classicHighPercent = [self getFloatForVariable:@"classic_high_percent"];
     float arcadeHighPercent = [self getFloatForVariable:@"arcade_high_percent"];
@@ -91,12 +112,18 @@ double pointsAvailable;
 
     self.highScore = (classicWeight*classicPoints) + (arcadeWeight*arcadePoints) + (zenWeight*zenPoints);
     [self writeValue:self.highScore forVariable:@"high_score"];
+    return self.highScore;
 }
 
 -(void) updatePlayingTime:(float) incrementTime{
     float currentTime =[self getFloatForVariable:@"playing_time"];
     float newTime = currentTime + incrementTime;
     [self writeValue:newTime forVariable:@"playing_time"];
+    NSDictionary *playingTimeParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [NSString stringWithFormat:@"%f", incrementTime],@"increment_time",
+                                       [NSString stringWithFormat:@"%f", newTime],@"new_total_time",
+                                       nil];
+    [Flurry logEvent:@"updated_playing_time" withParameters:playingTimeParams];
 }
 
 -(float) getFloatForVariable:(NSString*) variable{
@@ -111,7 +138,26 @@ double pointsAvailable;
     [dataService writeProperty:variable withValue:variableNumber];
 }
 
+#pragma mark Utility Helper Methods
 
+- (NSString*)gameModeToString:(PGGameModeType)gameMode {
+    NSString *result = nil;
+    
+    switch(gameMode) {
+        case kGameModeTypeClassic:
+            result = @"classic";
+            break;
+        case kGameModeTypeArcade:
+            result = @"arcade";
+            break;
+        case kGameModeTypeZen:
+            result = @"zen";
+            break;
+        default:
+            result = @"Unknown_Type";
+    }
+    return result;
+}
 
 
 @end
