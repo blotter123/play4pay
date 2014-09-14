@@ -21,6 +21,8 @@
 #import "PGZenGameMode.h"
 #import "PGDataService.h"
 
+#import "PGTileGenerator.h"
+
 @interface PGMenuController ()
 
 @property (nonatomic, strong) PGDataService *dataService;
@@ -73,6 +75,13 @@
     [super viewDidAppear:animated];
     [FlurryAds setAdDelegate:self];
     [FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
+    
+    PGTileGenerator *tile = [[PGTileGenerator alloc] init];
+    [tile initializeConfigurations];
+    
+    for (int i = 0; i < 100; i++) {
+        NSLog(@"%@", [tile nextPathStep]);
+    }
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
