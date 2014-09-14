@@ -44,17 +44,33 @@ static PGDataService *sharedDS = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource: @"sessions" ofType: @"plist"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile: path];
     [dict setValue:fbUserId forKey:@"current_user"];
+    [dict writeToFile:path atomically:YES];
+}
+
+
+-(NSString*) getCurrentUser{
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"sessions" ofType: @"plist"];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile: path];
+    return [dict valueForKey:@"current_user"];
 }
 
 -(void) initUserData:(NSString*) fbUserId withAccessToken:(NSString*) accessToken{
     NSString *path = [[NSBundle mainBundle] pathForResource: @"sessions" ofType: @"plist"];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile: path];
-    NSDictionary *userData = [NSDictionary dictionaryWithObjectsAndKeys:
-                              fbUserId, @"fb_user_id",
-                              accessToken, @"fb_access_token",
-                              nil];
-    [dict setObject:userData forKey:fbUserId];
-    [dict writeToFile:path atomically:YES];
+    NSDictionary *userData = [dict valueForKey:fbUserId];
+    if (userData == nil) {
+        NSDictionary *userData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  fbUserId, @"fb_user_id",
+                                  accessToken, @"fb_access_token",
+                                  0,@"zen_high_percent",
+                                  0,@"classic_high_percent",
+                                  0,@"arcade_high_percent",
+                                  0,@"points_constant",
+                                  0,@"high_score",
+                                  nil];
+        [dict setObject:userData forKey:fbUserId];
+        [dict writeToFile:path atomically:YES];
+    }
 }
 
 

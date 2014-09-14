@@ -35,61 +35,64 @@ double pointsAvailable;
                                           [NSString stringWithFormat:@"%f", score], @"score",
                                           [NSString stringWithFormat:@"%f", time], @"playing_time",
                                           nil];
-    
-    
-    float percentScore = 0.0f;
-    float currHighPercent = 0.0f;
-
-    switch (type) {
-        case kGameModeTypeClassic:
-            currHighPercent = [self getFloatForVariable:@"classic_high_percent"];
-            //% for time is the LOWER_BOUND / score
-            percentScore = RAW_CLASSIC_LOWER_TIME_BOUND/score;
-            if (percentScore > currHighPercent) {
-                [self writeValue:percentScore forVariable:@"classic_high_percent"];
-                
-                [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
-                [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
-                
-            }else{
-                [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
-            }
-            [Flurry logEvent:@"completed_classic_game_mode" withParameters:modeCompletionParams];
-            break;
-            
-        case kGameModeTypeArcade:
-            currHighPercent = [self getFloatForVariable:@"arcade_high_percent"];
-            //% for distance is the score / UPPER_BOUND
-            percentScore = score/RAW_ARCADE_UPPER_ROW_BOUND;
-            if (percentScore > currHighPercent) {
-                [self writeValue:percentScore forVariable:@"arcade_high_percent"];
-                
-                [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
-                [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
-                
-            }else{
-                [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
-            }
-            [Flurry logEvent:@"completed_arcade_game_mode" withParameters:modeCompletionParams];
-            break;
+    PGDataService* dataService = [PGDataService sharedDataService];
+    if ([[dataService readProperty:@"current_user"] isEqualToString:@"anonymous"]) {
+        NSLog(@"Recording mode completion for current user");
+        float percentScore = 0.0f;
+        float currHighPercent = 0.0f;
         
-        case kGameModeTypeZen:
-            currHighPercent = [self getFloatForVariable:@"zen_high_percent"];
-            //% for distance is the score / UPPER_BOUND
-            percentScore = score/RAW_ZEN_UPPER__ROW_BOUND;
-            if (percentScore > currHighPercent) {
-                [self writeValue:percentScore forVariable:@"zen_high_percent"];
+        switch (type) {
+            case kGameModeTypeClassic:
+                currHighPercent = [self getFloatForVariable:@"classic_high_percent"];
+                //% for time is the LOWER_BOUND / score
+                percentScore = RAW_CLASSIC_LOWER_TIME_BOUND/score;
+                if (percentScore > currHighPercent) {
+                    [self writeValue:percentScore forVariable:@"classic_high_percent"];
+                    
+                    [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
+                    [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+                    
+                }else{
+                    [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
+                }
+                [Flurry logEvent:@"completed_classic_game_mode" withParameters:modeCompletionParams];
+                break;
                 
-                [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
-                [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+            case kGameModeTypeArcade:
+                currHighPercent = [self getFloatForVariable:@"arcade_high_percent"];
+                //% for distance is the score / UPPER_BOUND
+                percentScore = score/RAW_ARCADE_UPPER_ROW_BOUND;
+                if (percentScore > currHighPercent) {
+                    [self writeValue:percentScore forVariable:@"arcade_high_percent"];
+                    
+                    [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
+                    [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+                    
+                }else{
+                    [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
+                }
+                [Flurry logEvent:@"completed_arcade_game_mode" withParameters:modeCompletionParams];
+                break;
                 
-            }else{
-               [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
-            }
-            [Flurry logEvent:@"completed_zen_game_mode" withParameters:modeCompletionParams];
-            break;
+            case kGameModeTypeZen:
+                currHighPercent = [self getFloatForVariable:@"zen_high_percent"];
+                //% for distance is the score / UPPER_BOUND
+                percentScore = score/RAW_ZEN_UPPER__ROW_BOUND;
+                if (percentScore > currHighPercent) {
+                    [self writeValue:percentScore forVariable:@"zen_high_percent"];
+                    
+                    [modeCompletionParams setValue:@"true" forKey:@"new_high_score"];
+                    [modeCompletionParams setValue:[NSString stringWithFormat:@"%f",[self calculateHighScore]] forKey:@"new_high_score_value"];
+                    
+                }else{
+                    [modeCompletionParams setValue:@"false" forKey:@"new_high_score"];
+                }
+                [Flurry logEvent:@"completed_zen_game_mode" withParameters:modeCompletionParams];
+                break;
+        }
+    }else{
+        NSLog(@"no currently logged in user to register scores for");
     }
-    
 }
 
 #pragma mark Calculation Helper Methods
@@ -113,6 +116,7 @@ double pointsAvailable;
     float zenPoints = zenWeight * pointsAvailable;
 
     self.highScore = (classicWeight*classicPoints) + (arcadeWeight*arcadePoints) + (zenWeight*zenPoints);
+    
     [self writeValue:self.highScore forVariable:@"high_score"];
     return self.highScore;
 }
