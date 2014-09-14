@@ -278,7 +278,7 @@ typedef enum {
     PGNodeType terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
     PGNodeType streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
     
-    for (int i = 2000; i >= 0; i--) {
+    for (int i = 100; i >= 0; i--) {
     
         float       positionX = MARGIN_LEFT;
         float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
