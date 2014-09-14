@@ -19,31 +19,31 @@
 
 typedef enum {
     
-//    kNodeTypeGrass  = 0,
-//    kNodeTypeWater  = 1,
-//    kNodeTypeDirt   = 2,
-//    
-//    kNodeTypePlain  = 3,
-//    kNodeTypeStone  = 4,
-//    
-//    kNodeTypeWood   = 5,
-//    kNodeTypeBrick  = 6,
-//    
-//    kNodeTypeTreeItem   = 10,
-//    kNodeTypeRockItem   = 11,
-
-    kNodeTypeGrass  = 1,
-    kNodeTypeWater  = 2,
-    kNodeTypeDirt   = 3,
+    kNodeTypeGrass  = 0,
+    kNodeTypeWater  = 1,
+    kNodeTypeDirt   = 2,
     
-    kNodeTypePlain  = 6,
+    kNodeTypePlain  = 3,
     kNodeTypeStone  = 4,
     
-    kNodeTypeWood   = 7,
-    kNodeTypeBrick  = 5,
+    kNodeTypeWood   = 5,
+    kNodeTypeBrick  = 6,
     
     kNodeTypeTreeItem   = 10,
     kNodeTypeRockItem   = 11,
+
+//    kNodeTypeGrass  = 1,
+//    kNodeTypeWater  = 2,
+//    kNodeTypeDirt   = 3,
+//    
+//    kNodeTypePlain  = 6,
+//    kNodeTypeStone  = 4,
+//    
+//    kNodeTypeWood   = 7,
+//    kNodeTypeBrick  = 5,
+//    
+//    kNodeTypeTreeItem   = 10,
+//    kNodeTypeRockItem   = 11,
     
 } PGNodeType;
 
@@ -77,30 +77,31 @@ typedef enum {
     
     
     //[self createWorldWithContentsOfFile:@"world"];
+    [self generateWorld];
     
-    PGTileGenerator *tile = [[PGTileGenerator alloc] init];
-    [tile initializeConfigurations];
-    
-    for (int i = 100; i >= 0; i--) {
-        
-        float       positionX = MARGIN_LEFT;
-        float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
-        
-        NSArray *row = [tile nextPathStep];
-        for (int a = 0; a < [row count]; a++) {
-            
-            SKSpriteNode *node = [self createNodeWithType:[(NSNumber*)[row objectAtIndex:a] integerValue]];
-            
-            if (positionX == MARGIN_LEFT)
-                positionX += node.size.width / 2;
-            
-            node.position = CGPointMake(positionX, positionY);
-            
-            [self.world addChild:node];
-            
-            positionX += node.size.width;
-        }
-    }
+//    PGTileGenerator *tile = [[PGTileGenerator alloc] init];
+//    [tile initializeConfigurations];
+//    
+//    for (int i = 100; i >= 0; i--) {
+//        
+//        float       positionX = MARGIN_LEFT;
+//        float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
+//        
+//        NSArray *row = [tile nextPathStep];
+//        for (int a = 0; a < [row count]; a++) {
+//            
+//            SKSpriteNode *node = [self createNodeWithType:[(NSNumber*)[row objectAtIndex:a] integerValue]];
+//            
+//            if (positionX == MARGIN_LEFT)
+//                positionX += node.size.width / 2;
+//            
+//            node.position = CGPointMake(positionX, positionY);
+//            
+//            [self.world addChild:node];
+//            
+//            positionX += node.size.width;
+//        }
+//    }
 }
 
 #pragma mark - Methods
@@ -275,7 +276,7 @@ typedef enum {
     PGNodeType terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
     PGNodeType streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
     
-    for (int i = 100; i >= 0; i--) {
+    for (int i = 2000; i >= 0; i--) {
     
         float       positionX = MARGIN_LEFT;
         float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
