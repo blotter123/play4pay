@@ -79,6 +79,8 @@ typedef enum {
     //[self createWorldWithContentsOfFile:@"world"];
     [self generateWorld];
     
+    [self performSelector:@selector(gameFailed) withObject:nil afterDelay:3.0f];
+    
 //    PGTileGenerator *tile = [[PGTileGenerator alloc] init];
 //    [tile initializeConfigurations];
 //    
@@ -250,18 +252,6 @@ typedef enum {
     node.parent.position = CGPointMake(node.parent.position.x - cameraPositionInScene.x, node.parent.position.y - cameraPositionInScene.y);
 }
 
-#pragma mark - SKSceneDelegate
-
-- (void) didSimulatePhysics
-{
-    [self centerOnNode:[self childNodeWithName:@"//camera"]];
-}
-
-- (void) update:(CFTimeInterval)currentTime {
-    
-    self.camera.position = CGPointMake(self.camera.position.x, self.camera.position.y + 2.0f);
-}
-
 - (void) generateWorld {
     
     NSInteger terrainThreshold = 2;
@@ -272,12 +262,12 @@ typedef enum {
     
     NSInteger newStreetIdx = -1;
     NSInteger streetIdx = arc4random_uniform(5);
-
+    
     PGNodeType terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
     PGNodeType streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
     
-    for (int i = 2000; i >= 0; i--) {
-    
+    for (int i = 14; i >= 0; i--) {
+        
         float       positionX = MARGIN_LEFT;
         float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
         
@@ -331,6 +321,14 @@ typedef enum {
                     [self.world addChild:treeNode];
                 }
             }
+            else if (nodeType == streetType && a == streetIdx && (i % 4 == 0)) {
+                
+                PGGemNode *gem = [PGGemNode gemWithType:kGemTypeOrange];
+                gem.position = CGPointMake(positionX + BLOCK_WIDTH * 0.5, positionY + (BLOCK_HEIGHT / 2));
+                gem.zPosition = 11;
+                
+                [self.world addChild:gem];
+            }
             
             [self.world addChild:node];
             
@@ -340,7 +338,34 @@ typedef enum {
         turnCounter++;
         terrainCounter++;
     }
+}
+
+- (void) gameFailed {
     
+    for (SKSpriteNode *node in [self.world children]) {
+        
+        if (![node.name isEqualToString:@"camera"]) {
+            
+            float delay = (100 + arc4random_uniform(650)) / 1000.0f;
+            
+            SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1.0f, 1.0f)];
+            body.mass = 2.0f;
+            
+            [node performSelector:@selector(setPhysicsBody:) withObject:body afterDelay:delay];
+        }
+    }
+}
+
+#pragma mark - SKSceneDelegate
+
+- (void) didSimulatePhysics
+{
+    [self centerOnNode:[self childNodeWithName:@"//camera"]];
+}
+
+- (void) update:(CFTimeInterval)currentTime
+{    
+    //self.camera.position = CGPointMake(self.camera.position.x, self.camera.position.y + 2.0f);
 }
 
 @end

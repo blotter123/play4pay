@@ -56,8 +56,11 @@
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
     [self setUserInteractionEnabled:NO];
     [self animate];
 }
+
+
 
 @end
