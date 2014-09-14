@@ -36,7 +36,7 @@ double pointsAvailable;
                                           [NSString stringWithFormat:@"%f", time], @"playing_time",
                                           nil];
     PGDataService* dataService = [PGDataService sharedDataService];
-    if ([[dataService readProperty:@"current_user"] isEqualToString:@"anonymous"]) {
+    if ([[dataService readProperty:@"current_user"] isEqualToString:@"anonymous"] == false) {
         NSLog(@"Recording mode completion for current user");
         float percentScore = 0.0f;
         float currHighPercent = 0.0f;
@@ -92,6 +92,7 @@ double pointsAvailable;
         }
     }else{
         NSLog(@"no currently logged in user to register scores for");
+        [Flurry logEvent:@"anonymous_user_play" withParameters:modeCompletionParams];
     }
 }
 
