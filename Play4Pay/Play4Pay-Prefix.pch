@@ -23,5 +23,6 @@
 
     #import "UIColor+Comparison.h"
     #import "NSArray+Reverse.h"
+    #import "SKSpriteNode+Animation.h"
 
 #endif

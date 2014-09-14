@@ -64,6 +64,7 @@
 		D4ACACC01966601800182070 /* Play4PayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACBF1966601800182070 /* Play4PayTests.m */; };
 		D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACCC19666C5D00182070 /* PGSpriteNode.m */; };
 		D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ACACD419667B2400182070 /* UIColor+Comparison.m */; };
+		D4CEB1B619C5E5D900CF0370 /* SKSpriteNode+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CEB1B519C5E5D900CF0370 /* SKSpriteNode+Animation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +174,8 @@
 		D4ACACCF1966751600182070 /* PGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGConstants.h; sourceTree = "<group>"; };
 		D4ACACD319667B2400182070 /* UIColor+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Comparison.h"; sourceTree = "<group>"; };
 		D4ACACD419667B2400182070 /* UIColor+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Comparison.m"; sourceTree = "<group>"; };
+		D4CEB1B419C5E5D900CF0370 /* SKSpriteNode+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+Animation.h"; sourceTree = "<group>"; };
+		D4CEB1B519C5E5D900CF0370 /* SKSpriteNode+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+Animation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +446,8 @@
 				D4ACACD419667B2400182070 /* UIColor+Comparison.m */,
 				D4A2564819C5145400BC3183 /* NSArray+Reverse.h */,
 				D4A2564919C5145400BC3183 /* NSArray+Reverse.m */,
+				D4CEB1B419C5E5D900CF0370 /* SKSpriteNode+Animation.h */,
+				D4CEB1B519C5E5D900CF0370 /* SKSpriteNode+Animation.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -495,6 +500,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Play4Pay;
 				TargetAttributes = {
+					D4ACAC891966601800182070 = {
+						DevelopmentTeam = 83J9Q7997G;
+					};
 					D4ACACB11966601800182070 = {
 						TestTargetID = D4ACAC891966601800182070;
 					};
@@ -563,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A2566519C5543B00BC3183 /* PGWorldViewController.m in Sources */,
+				D4CEB1B619C5E5D900CF0370 /* SKSpriteNode+Animation.m in Sources */,
 				AC2695241969952C0001EE62 /* PGMenuController.m in Sources */,
 				D46CBA5A19B18992005D0BBB /* PGArcadeGameMode.m in Sources */,
 				D4ACAC9C1966601800182070 /* main.m in Sources */,
@@ -705,6 +714,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -719,6 +730,7 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -729,6 +741,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -743,6 +757,7 @@
 				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};

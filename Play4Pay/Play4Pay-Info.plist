@@ -36,6 +36,8 @@
 	<string>301447553362713</string>
 	<key>FacebookDisplayName</key>
 	<string>Play4Pay</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
