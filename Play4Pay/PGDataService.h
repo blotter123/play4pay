@@ -14,5 +14,9 @@
 
 - (void) writeProperty:(NSString*) propertyName withValue:(NSObject*) value;
 - (id) readProperty:(NSString*) propertyName;
+- (void) setCurrentUser:(NSString*) fbUserId;
+- (NSString*) getCurrentUser;
+- (void) initUserData:(NSString*) fbUserId withAccessToken:(NSString*) accessToken;
+
 
 @end

@@ -21,6 +21,8 @@
 #import "PGZenGameMode.h"
 #import "PGDataService.h"
 
+#import "PGTileGenerator.h"
+
 @interface PGMenuController ()
 
 @property (nonatomic, strong) PGDataService *dataService;
@@ -72,6 +74,13 @@
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
+    
+    PGTileGenerator *tile = [[PGTileGenerator alloc] init];
+    [tile initializeConfigurations];
+    
+    for (int i = 0; i < 100; i++) {
+        NSLog(@"%@", [tile nextPathStep]);
+    }
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
@@ -119,22 +128,29 @@
     if (!error && state == FBSessionStateOpen){
         [self userLoggedIn];
         
-        //write the user's userId and accessToken to plist through DataService
-        NSString* accessToken = [[session accessTokenData] accessToken];
-        [dataService writeProperty:@"fb_access_token" withValue:accessToken];
+        
         [FBRequestConnection startForMeWithCompletionHandler:
          ^(FBRequestConnection *connection, id result, NSError *error)
          {
+             //write the user's userId and accessToken to plist through DataService
+             NSString* accessToken = [[session accessTokenData] accessToken];
+             
              NSString* userId = (NSString*)[result objectForKey:@"id"] ;
+             
+             //sets the currentUserId within the data service
+             [dataService setCurrentUser:userId];
+             //initialize userData dictionary if it does not already exist
+             [dataService initUserData:userId withAccessToken:accessToken];
+             
              NSString* gender = (NSString*)[result objectForKey:@"gender"];
              [Flurry setGender:[gender substringToIndex:1]];
-             [dataService writeProperty:@"fb_user_id" withValue:userId];
          }];
         
         return;
     }
     if (state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed){
         [self userLoggedOut];
+        [dataService writeProperty:@"current_user" withValue:@"anonymous"];
         
     }
     
@@ -183,17 +199,12 @@
 {
     [self.fbLoginButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
     [self showMessage:@"Scores will not be posted to Facebook when you are logged out!" withTitle:@"You're now logged out"];
-    // remove fb credentials from plist
-    self.dataService = [PGDataService sharedDataService];
-    [self.dataService writeProperty:@"fb_user_id" withValue:@""];
-    [self.dataService writeProperty:@"fb_access_token" withValue:@""];
 }
 
 - (void)userLoggedIn
 {
     [self.fbLoginButton setTitle:@"Log out" forState:UIControlStateNormal];
     [self showMessage:@"You're now logged in" withTitle:@"Welcome!"];
-    
 }
 
 // Show an alert message
@@ -212,23 +223,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"prepareForSegue: %@", segue.identifier);
-    
-    
     PGViewController *gameController = segue.destinationViewController;
-    NSMutableDictionary *gameModeParams = [NSMutableDictionary dictionary];
+    
     if ([segue.identifier isEqualToString:@"ClassicMode"]) {
         gameController.gameMode = [PGClassicGameMode gameMode];
-        [gameModeParams setValue:@"classic" forKey:@"game_mode"];
+        [Flurry logEvent:@"started_classic_game_mode"];
         
     } else if ([segue.identifier isEqualToString:@"ArcadeMode"]) {
         gameController.gameMode = [PGArcadeGameMode gameMode];
-        [gameModeParams setValue:@"arcade" forKey:@"game_mode"];
+        [Flurry logEvent:@"started_arcade_game_mode"];
         
     }else if ([segue.identifier isEqualToString:@"ZenMode"]) {
         gameController.gameMode = [PGZenGameMode gameMode];
-        [gameModeParams setValue:@"zen" forKey:@"game_mode"];
+        [Flurry logEvent:@"started_zen_game_mode"];
     }
-    //[Flurry logEvent:@"started_game_play" withParameters:gameModeParams];
 }
 
 
