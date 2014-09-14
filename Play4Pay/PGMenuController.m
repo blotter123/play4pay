@@ -74,13 +74,6 @@
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
-    
-    PGTileGenerator *tile = [[PGTileGenerator alloc] init];
-    [tile initializeConfigurations];
-    
-    for (int i = 0; i < 100; i++) {
-        NSLog(@"%@", [tile nextPathStep]);
-    }
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
