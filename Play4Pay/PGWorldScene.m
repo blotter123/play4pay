@@ -19,31 +19,21 @@
 
 typedef enum {
     
-    kNodeTypeGrass  = 0,
-    kNodeTypeWater  = 1,
-    kNodeTypeDirt   = 2,
+    //non-path
+    kNodeTypeGrass = 1,
+    kNodeTypeWater = 2,
     
-    kNodeTypePlain  = 3,
-    kNodeTypeStone  = 4,
+    //transition between non-path types
+    kNodeTypeDirt = 3,
     
-    kNodeTypeWood   = 5,
-    kNodeTypeBrick  = 6,
+    //path
+    kNodeTypeStone = 4,
+    kNodeTypeBrick = 5,
+    kNodeTypePlain = 6,
+    kNodeTypeWood = 7,
     
-    kNodeTypeTreeItem   = 10,
-    kNodeTypeRockItem   = 11,
-
-//    kNodeTypeGrass  = 1,
-//    kNodeTypeWater  = 2,
-//    kNodeTypeDirt   = 3,
-//    
-//    kNodeTypePlain  = 6,
-//    kNodeTypeStone  = 4,
-//    
-//    kNodeTypeWood   = 7,
-//    kNodeTypeBrick  = 5,
-//    
-//    kNodeTypeTreeItem   = 10,
-//    kNodeTypeRockItem   = 11,
+    kNodeTypeTreeItem   = 8,
+    kNodeTypeRockItem   = 9,
     
 } PGNodeType;
 
@@ -77,7 +67,7 @@ typedef enum {
     
     
     //[self createWorldWithContentsOfFile:@"world"];
-    [self generateWorld];
+    //[self generateWorld];
     
 
     PGTileGenerator *tile = [[PGTileGenerator alloc] init];
@@ -253,95 +243,95 @@ typedef enum {
     node.parent.position = CGPointMake(node.parent.position.x - cameraPositionInScene.x, node.parent.position.y - cameraPositionInScene.y);
 }
 
-- (void) generateWorld {
-    
-    NSInteger terrainThreshold = 2;
-    NSInteger terrainCounter = 0;
-    
-    NSInteger turnThreshold = 5;
-    NSInteger turnCounter = 0;
-    
-    NSInteger newStreetIdx = -1;
-    NSInteger streetIdx = arc4random_uniform(5);
-    
-    PGNodeType terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
-    PGNodeType streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
-    
-
-    for (int i = 14; i >= 0; i--) {
-        
-
-        float       positionX = MARGIN_LEFT;
-        float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
-        
-        if (turnCounter > (turnThreshold - 2) && newStreetIdx == -1) {
-            
-            NSInteger streetDifference = arc4random_uniform(2) ? arc4random_uniform(3) : -arc4random_uniform(3);
-            newStreetIdx = MIN(4, abs(streetIdx + streetDifference));
-        }
-        
-        if (turnCounter > turnThreshold) {
-            turnCounter = 0;
-            
-            streetIdx = newStreetIdx;
-            newStreetIdx = -1;
-        }
-        
-        if (terrainCounter > terrainThreshold) {
-            
-            terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
-            terrainCounter = 0;
-            
-            streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
-        }
-        
-        for (int a = 0; a < 6; a++) {
-            
-            NSInteger nodeType = terrainType;
-            
-            if (a == streetIdx || a == streetIdx + 1)
-                nodeType = streetType;
-            
-            if (newStreetIdx != -1 && (a == newStreetIdx || a == newStreetIdx + 1))
-                nodeType = streetType;
-            
-            SKSpriteNode *node = [self createNodeWithType:nodeType];
-            
-            if (positionX == MARGIN_LEFT)
-                positionX += node.size.width / 2;
-            
-            node.position = CGPointMake(positionX, positionY);
-            
-            if (nodeType == kNodeTypeGrass || nodeType == kNodeTypeWater) {
-                
-                //  Create random trees
-                if (arc4random_uniform(50) % 7 == 0) {
-                    
-                    SKSpriteNode *treeNode = [self createNodeWithType:nodeType == kNodeTypeWater ? kNodeTypeRockItem : kNodeTypeTreeItem];
-                    treeNode.position = CGPointMake(positionX, positionY + (BLOCK_HEIGHT / 4));
-                    treeNode.zPosition = 10;
-                    
-                    [self.world addChild:treeNode];
-                }
-            }
-            else if (nodeType == streetType && a == streetIdx && (i % 4 == 0)) {
-                
-                PGGemNode *gem = [PGGemNode gemWithType:kGemTypeOrange];
-                gem.position = CGPointMake(positionX + BLOCK_WIDTH * 0.5, positionY + (BLOCK_HEIGHT / 2));
-                gem.zPosition = 11;
-                
-                [self.world addChild:gem];
-            }
-            
-            [self.world addChild:node];
-            
-            positionX += node.size.width;
-        }
-        
-        turnCounter++;
-        terrainCounter++;
-    }
-}
+//- (void) generateWorld {
+//    
+//    NSInteger terrainThreshold = 2;
+//    NSInteger terrainCounter = 0;
+//    
+//    NSInteger turnThreshold = 5;
+//    NSInteger turnCounter = 0;
+//    
+//    NSInteger newStreetIdx = -1;
+//    NSInteger streetIdx = arc4random_uniform(5);
+//    
+//    PGNodeType terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
+//    PGNodeType streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
+//    
+//
+//    for (int i = 14; i >= 0; i--) {
+//        
+//
+//        float       positionX = MARGIN_LEFT;
+//        float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
+//        
+//        if (turnCounter > (turnThreshold - 2) && newStreetIdx == -1) {
+//            
+//            NSInteger streetDifference = arc4random_uniform(2) ? arc4random_uniform(3) : -arc4random_uniform(3);
+//            newStreetIdx = MIN(4, abs(streetIdx + streetDifference));
+//        }
+//        
+//        if (turnCounter > turnThreshold) {
+//            turnCounter = 0;
+//            
+//            streetIdx = newStreetIdx;
+//            newStreetIdx = -1;
+//        }
+//        
+//        if (terrainCounter > terrainThreshold) {
+//            
+//            terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
+//            terrainCounter = 0;
+//            
+//            streetType = (terrainType == kNodeTypeGrass ? kNodeTypePlain : kNodeTypeStone);
+//        }
+//        
+//        for (int a = 0; a < 6; a++) {
+//            
+//            NSInteger nodeType = terrainType;
+//            
+//            if (a == streetIdx || a == streetIdx + 1)
+//                nodeType = streetType;
+//            
+//            if (newStreetIdx != -1 && (a == newStreetIdx || a == newStreetIdx + 1))
+//                nodeType = streetType;
+//            
+//            SKSpriteNode *node = [self createNodeWithType:nodeType];
+//            
+//            if (positionX == MARGIN_LEFT)
+//                positionX += node.size.width / 2;
+//            
+//            node.position = CGPointMake(positionX, positionY);
+//            
+//            if (nodeType == kNodeTypeGrass || nodeType == kNodeTypeWater) {
+//                
+//                //  Create random trees
+//                if (arc4random_uniform(50) % 7 == 0) {
+//                    
+//                    SKSpriteNode *treeNode = [self createNodeWithType:nodeType == kNodeTypeWater ? kNodeTypeRockItem : kNodeTypeTreeItem];
+//                    treeNode.position = CGPointMake(positionX, positionY + (BLOCK_HEIGHT / 4));
+//                    treeNode.zPosition = 10;
+//                    
+//                    [self.world addChild:treeNode];
+//                }
+//            }
+//            else if (nodeType == streetType && a == streetIdx && (i % 4 == 0)) {
+//                
+//                PGGemNode *gem = [PGGemNode gemWithType:kGemTypeOrange];
+//                gem.position = CGPointMake(positionX + BLOCK_WIDTH * 0.5, positionY + (BLOCK_HEIGHT / 2));
+//                gem.zPosition = 11;
+//                
+//                [self.world addChild:gem];
+//            }
+//            
+//            [self.world addChild:node];
+//            
+//            positionX += node.size.width;
+//        }
+//        
+//        turnCounter++;
+//        terrainCounter++;
+//    }
+//}
 
 - (void) gameFailed {
     
@@ -368,7 +358,7 @@ typedef enum {
 
 - (void) update:(CFTimeInterval)currentTime
 {    
-    //self.camera.position = CGPointMake(self.camera.position.x, self.camera.position.y + 2.0f);
+    self.camera.position = CGPointMake(self.camera.position.x, self.camera.position.y + 2.0f);
 }
 
 @end

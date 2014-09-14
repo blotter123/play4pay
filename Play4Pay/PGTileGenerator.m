@@ -32,11 +32,14 @@ typedef enum {
     kNodeTypePlain = 6,
     kNodeTypeWood = 7,
     
+    kNodeTypeTreeItem   = 8,
+    kNodeTypeRockItem   = 9,
+    
 } PGNodeType;
 
 @property NSInteger step;
 @property PGNodeType pathType;
-@property PGNodeType nonPathType;
+@property PGNodeType terrainType;
 @property NSMutableArray* pathBlockAhead;
 
 @end
@@ -46,8 +49,8 @@ typedef enum {
 
 -(void) initializeConfigurations{
     self.step = 0;
-    self.pathType = [self randomPathType];
-    self.nonPathType = [self randomNonPathType];
+    self.terrainType = [self randomTerrainType];
+    self.pathType = [self randomPathTypeForTerrain:self.terrainType];
     self.pathBlockAhead = [[NSMutableArray alloc]init];
     NSArray* initalPath = [NSArray arrayWithObjects:[NSNumber numberWithInteger:2], [NSNumber numberWithInteger:3], nil];
     for (int i = 0; i <4; i++) {
@@ -72,19 +75,36 @@ typedef enum {
     NSNumber* left = [pathBounds objectAtIndex:0];
     NSNumber* right = [pathBounds objectAtIndex:1];
     for (int i = 0; i < [left intValue]; i++) {
-        [row addObject:[NSNumber numberWithInt:self.nonPathType]];
+        [row addObject:[NSNumber numberWithInt:self.terrainType]];
     }
     for (int i = [left intValue]; i <= [right intValue]; i++) {
         [row addObject:[NSNumber numberWithInt:self.pathType]];
     }
     for (int i = [right intValue]+1; i <= 5; i++) {
-        [row addObject:[NSNumber numberWithInt:self.nonPathType]];
+        [row addObject:[NSNumber numberWithInt:self.terrainType]];
     }
     return row;
 }
 
+- (NSArray*) fillRow:(NSNumber*) left rightBound:(NSNumber*) right{
+    NSMutableArray* row = [[NSMutableArray alloc]init];
+    for (int i = 0; i < [left intValue]; i++) {
+        [row addObject:[NSNumber numberWithInt:self.terrainType]];
+    }
+    for (int i = [left intValue]; i <= [right intValue]; i++) {
+        [row addObject:[NSNumber numberWithInt:self.pathType]];
+    }
+    for (int i = [right intValue]+1; i <= 5; i++) {
+        [row addObject:[NSNumber numberWithInt:self.terrainType]];
+    }
+    return row;
+}
+
+
+
+
 - (NSMutableArray*) updatePath{
-    bool turn = [self shouldSwapWithProbability:0.1];
+    bool turn = [self shouldSwapWithProbability:0.5];
     PGPathStepType nextDirection = FOLLOW;
     NSArray* lastPath = [self.pathBlockAhead objectAtIndex:3];
     NSNumber* lastLeft = [lastPath objectAtIndex:0];
@@ -131,39 +151,27 @@ typedef enum {
 }
 
 - (void) updateWorld{
-    bool change = [self shouldSwapWithProbability:0.1];
+    bool change = [self shouldSwapWithProbability:0.5];
     if (change) {
-        self.pathType = [self randomPathType];
-        self.nonPathType = [self randomNonPathType];
+        self.terrainType = [self randomTerrainType];
+        self.pathType = [self randomPathTypeForTerrain:self.terrainType];
     }
 }
 
-- (PGNodeType) randomNonPathType{
-    PGNodeType type = kNodeTypeWater;
-    if ([self shouldSwapWithProbability:0.5]) {
-        type = kNodeTypeGrass;
-    }
-    return type;
+
+- (PGNodeType) randomTerrainType{
+    PGNodeType terrainType = arc4random_uniform(2) ? kNodeTypeWater : kNodeTypeGrass;
+    return terrainType;
 }
 
-- (PGNodeType) randomPathType{
-    int lowerBound = 0;
-    int upperBound = 100;
-    int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
-    PGNodeType type = kNodeTypeWood;
-    if (rndValue <= 25) {
-        type = kNodeTypeWood;
+- (PGNodeType) randomPathTypeForTerrain:(PGNodeType) terrainType{
+    //int rndValue = arc4random_uniform(11);
+    if (terrainType == kNodeTypeWater) {
+            return kNodeTypeStone;
+
+    }else{
+            return kNodeTypePlain;
     }
-    else if(rndValue <= 50){
-        type = kNodeTypeBrick;
-    }
-    else if(rndValue <= 75){
-        type = kNodeTypePlain;
-    }
-    else{
-        type = kNodeTypeStone;
-    }
-    return type;
 }
 
 - (BOOL) shouldSwapWithProbability:(float)prob{
