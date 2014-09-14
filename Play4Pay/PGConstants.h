@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define GRID_COUNT          9
+#define GRID_COUNT          0
 
 #define TOTAL_ROWS          4
 #define TOTAL_COLUMNS       4

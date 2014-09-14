@@ -26,6 +26,35 @@
 		D46CBA5D19B189A1005D0BBB /* PGZenGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D46CBA5C19B189A1005D0BBB /* PGZenGameMode.m */; };
 		D4741CD11969F34E00A6B7A3 /* PGClassicGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CCE1969F34E00A6B7A3 /* PGClassicGameMode.m */; };
 		D4741CD21969F34E00A6B7A3 /* PGGameMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4741CD01969F34E00A6B7A3 /* PGGameMode.m */; };
+		D4A2562819C4F6FD00BC3183 /* dirt.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562319C4F6FD00BC3183 /* dirt.png */; };
+		D4A2562919C4F6FD00BC3183 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562419C4F6FD00BC3183 /* grass.png */; };
+		D4A2562A19C4F6FD00BC3183 /* plain.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562519C4F6FD00BC3183 /* plain.png */; };
+		D4A2562B19C4F6FD00BC3183 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562619C4F6FD00BC3183 /* brick.png */; };
+		D4A2562C19C4F6FD00BC3183 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562719C4F6FD00BC3183 /* water.png */; };
+		D4A2562E19C4F73000BC3183 /* stone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562D19C4F73000BC3183 /* stone.png */; };
+		D4A2563019C4F74200BC3183 /* wood.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2562F19C4F74200BC3183 /* wood.png */; };
+		D4A2563319C4F88500BC3183 /* PGWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A2563219C4F88500BC3183 /* PGWorldScene.m */; };
+		D4A2563619C4F93B00BC3183 /* PGWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A2563519C4F93B00BC3183 /* PGWorldViewController.m */; };
+		D4A2563E19C4FD9100BC3183 /* dirt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563719C4FD9100BC3183 /* dirt@2x.png */; };
+		D4A2563F19C4FD9100BC3183 /* grass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563819C4FD9100BC3183 /* grass@2x.png */; };
+		D4A2564019C4FD9100BC3183 /* plain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563919C4FD9100BC3183 /* plain@2x.png */; };
+		D4A2564119C4FD9100BC3183 /* stone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563A19C4FD9100BC3183 /* stone@2x.png */; };
+		D4A2564219C4FD9100BC3183 /* brick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563B19C4FD9100BC3183 /* brick@2x.png */; };
+		D4A2564319C4FD9100BC3183 /* water@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563C19C4FD9100BC3183 /* water@2x.png */; };
+		D4A2564419C4FD9100BC3183 /* wood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2563D19C4FD9100BC3183 /* wood@2x.png */; };
+		D4A2564719C5104200BC3183 /* world.txt in Resources */ = {isa = PBXBuildFile; fileRef = D4A2564619C5104200BC3183 /* world.txt */; };
+		D4A2564A19C5145400BC3183 /* NSArray+Reverse.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A2564919C5145400BC3183 /* NSArray+Reverse.m */; };
+		D4A2564E19C5252000BC3183 /* gem_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2564B19C5252000BC3183 /* gem_blue.png */; };
+		D4A2564F19C5252000BC3183 /* gem_green.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2564C19C5252000BC3183 /* gem_green.png */; };
+		D4A2565019C5252000BC3183 /* gem_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2564D19C5252000BC3183 /* gem_orange.png */; };
+		D4A2565419C5255200BC3183 /* gem_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2565119C5255200BC3183 /* gem_blue@2x.png */; };
+		D4A2565519C5255200BC3183 /* gem_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2565219C5255200BC3183 /* gem_green@2x.png */; };
+		D4A2565619C5255200BC3183 /* gem_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2565319C5255200BC3183 /* gem_orange@2x.png */; };
+		D4A2565919C5280A00BC3183 /* PGGemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A2565819C5280A00BC3183 /* PGGemNode.m */; };
+		D4A2565B19C546FC00BC3183 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2565A19C546FC00BC3183 /* rock.png */; };
+		D4A2565D19C5470D00BC3183 /* rock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2565C19C5470D00BC3183 /* rock@2x.png */; };
+		D4A2565F19C5473700BC3183 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2565E19C5473700BC3183 /* tree.png */; };
+		D4A2566119C5474800BC3183 /* tree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A2566019C5474800BC3183 /* tree@2x.png */; };
 		D4ACAC8E1966601800182070 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8D1966601800182070 /* Foundation.framework */; };
 		D4ACAC901966601800182070 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC8F1966601800182070 /* CoreGraphics.framework */; };
 		D4ACAC921966601800182070 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACAC911966601800182070 /* UIKit.framework */; };
@@ -90,6 +119,39 @@
 		D4741CCF1969F34E00A6B7A3 /* PGGameMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGameMode.h; sourceTree = "<group>"; };
 		D4741CD01969F34E00A6B7A3 /* PGGameMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGameMode.m; sourceTree = "<group>"; };
 		D4741CD4196A0C6500A6B7A3 /* PGGameSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PGGameSceneDelegate.h; sourceTree = "<group>"; };
+		D4A2562319C4F6FD00BC3183 /* dirt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dirt.png; sourceTree = "<group>"; };
+		D4A2562419C4F6FD00BC3183 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		D4A2562519C4F6FD00BC3183 /* plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plain.png; sourceTree = "<group>"; };
+		D4A2562619C4F6FD00BC3183 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
+		D4A2562719C4F6FD00BC3183 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		D4A2562D19C4F73000BC3183 /* stone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone.png; sourceTree = "<group>"; };
+		D4A2562F19C4F74200BC3183 /* wood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wood.png; sourceTree = "<group>"; };
+		D4A2563119C4F88500BC3183 /* PGWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWorldScene.h; sourceTree = "<group>"; };
+		D4A2563219C4F88500BC3183 /* PGWorldScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWorldScene.m; sourceTree = "<group>"; };
+		D4A2563419C4F93B00BC3183 /* PGWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGWorldViewController.h; sourceTree = "<group>"; };
+		D4A2563519C4F93B00BC3183 /* PGWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGWorldViewController.m; sourceTree = "<group>"; };
+		D4A2563719C4FD9100BC3183 /* dirt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dirt@2x.png"; sourceTree = "<group>"; };
+		D4A2563819C4FD9100BC3183 /* grass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grass@2x.png"; sourceTree = "<group>"; };
+		D4A2563919C4FD9100BC3183 /* plain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plain@2x.png"; sourceTree = "<group>"; };
+		D4A2563A19C4FD9100BC3183 /* stone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stone@2x.png"; sourceTree = "<group>"; };
+		D4A2563B19C4FD9100BC3183 /* brick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brick@2x.png"; sourceTree = "<group>"; };
+		D4A2563C19C4FD9100BC3183 /* water@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "water@2x.png"; sourceTree = "<group>"; };
+		D4A2563D19C4FD9100BC3183 /* wood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wood@2x.png"; sourceTree = "<group>"; };
+		D4A2564619C5104200BC3183 /* world.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = world.txt; sourceTree = "<group>"; };
+		D4A2564819C5145400BC3183 /* NSArray+Reverse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reverse.h"; sourceTree = "<group>"; };
+		D4A2564919C5145400BC3183 /* NSArray+Reverse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reverse.m"; sourceTree = "<group>"; };
+		D4A2564B19C5252000BC3183 /* gem_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gem_blue.png; sourceTree = "<group>"; };
+		D4A2564C19C5252000BC3183 /* gem_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gem_green.png; sourceTree = "<group>"; };
+		D4A2564D19C5252000BC3183 /* gem_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gem_orange.png; sourceTree = "<group>"; };
+		D4A2565119C5255200BC3183 /* gem_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gem_blue@2x.png"; sourceTree = "<group>"; };
+		D4A2565219C5255200BC3183 /* gem_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gem_green@2x.png"; sourceTree = "<group>"; };
+		D4A2565319C5255200BC3183 /* gem_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gem_orange@2x.png"; sourceTree = "<group>"; };
+		D4A2565719C5280A00BC3183 /* PGGemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGGemNode.h; sourceTree = "<group>"; };
+		D4A2565819C5280A00BC3183 /* PGGemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGGemNode.m; sourceTree = "<group>"; };
+		D4A2565A19C546FC00BC3183 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
+		D4A2565C19C5470D00BC3183 /* rock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock@2x.png"; sourceTree = "<group>"; };
+		D4A2565E19C5473700BC3183 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
+		D4A2566019C5474800BC3183 /* tree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree@2x.png"; sourceTree = "<group>"; };
 		D4ACAC8A1966601800182070 /* Play4Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play4Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ACAC8D1966601800182070 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4ACAC8F1966601800182070 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,6 +275,45 @@
 			name = "Game Modes";
 			sourceTree = "<group>";
 		};
+		D4A2562219C4F6EA00BC3183 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2565E19C5473700BC3183 /* tree.png */,
+				D4A2566019C5474800BC3183 /* tree@2x.png */,
+				D4A2565A19C546FC00BC3183 /* rock.png */,
+				D4A2565C19C5470D00BC3183 /* rock@2x.png */,
+				D4A2564B19C5252000BC3183 /* gem_blue.png */,
+				D4A2565119C5255200BC3183 /* gem_blue@2x.png */,
+				D4A2564C19C5252000BC3183 /* gem_green.png */,
+				D4A2565219C5255200BC3183 /* gem_green@2x.png */,
+				D4A2564D19C5252000BC3183 /* gem_orange.png */,
+				D4A2565319C5255200BC3183 /* gem_orange@2x.png */,
+				D4A2562F19C4F74200BC3183 /* wood.png */,
+				D4A2563D19C4FD9100BC3183 /* wood@2x.png */,
+				D4A2562D19C4F73000BC3183 /* stone.png */,
+				D4A2563A19C4FD9100BC3183 /* stone@2x.png */,
+				D4A2562319C4F6FD00BC3183 /* dirt.png */,
+				D4A2563719C4FD9100BC3183 /* dirt@2x.png */,
+				D4A2562419C4F6FD00BC3183 /* grass.png */,
+				D4A2563819C4FD9100BC3183 /* grass@2x.png */,
+				D4A2562519C4F6FD00BC3183 /* plain.png */,
+				D4A2563919C4FD9100BC3183 /* plain@2x.png */,
+				D4A2562619C4F6FD00BC3183 /* brick.png */,
+				D4A2563B19C4FD9100BC3183 /* brick@2x.png */,
+				D4A2562719C4F6FD00BC3183 /* water.png */,
+				D4A2563C19C4FD9100BC3183 /* water@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D4A2564519C50FF500BC3183 /* Definition */ = {
+			isa = PBXGroup;
+			children = (
+				D4A2564619C5104200BC3183 /* world.txt */,
+			);
+			name = Definition;
+			sourceTree = "<group>";
+		};
 		D4ACAC811966601800182070 = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +364,8 @@
 				D4ACACA11966601800182070 /* Main.storyboard */,
 				D4ACACA41966601800182070 /* PGViewController.h */,
 				D4ACACA51966601800182070 /* PGViewController.m */,
+				D4A2563419C4F93B00BC3183 /* PGWorldViewController.h */,
+				D4A2563519C4F93B00BC3183 /* PGWorldViewController.m */,
 				D4741CD31969F35300A6B7A3 /* Game Modes */,
 				D4ACACCA19666C4400182070 /* Nodes */,
 				D4ACACC919666C3B00182070 /* Scenes */,
@@ -277,6 +380,8 @@
 		D4ACAC961966601800182070 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D4A2564519C50FF500BC3183 /* Definition */,
+				D4A2562219C4F6EA00BC3183 /* Resources */,
 				AC88CD001985655400B7A768 /* data.plist */,
 				D4ACAC971966601800182070 /* Play4Pay-Info.plist */,
 				D4ACAC981966601800182070 /* InfoPlist.strings */,
@@ -309,6 +414,8 @@
 			children = (
 				D4ACACA71966601800182070 /* PGMainScene.h */,
 				D4ACACA81966601800182070 /* PGMainScene.m */,
+				D4A2563119C4F88500BC3183 /* PGWorldScene.h */,
+				D4A2563219C4F88500BC3183 /* PGWorldScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -318,6 +425,8 @@
 			children = (
 				D4ACACCB19666C5D00182070 /* PGSpriteNode.h */,
 				D4ACACCC19666C5D00182070 /* PGSpriteNode.m */,
+				D4A2565719C5280A00BC3183 /* PGGemNode.h */,
+				D4A2565819C5280A00BC3183 /* PGGemNode.m */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -335,6 +444,8 @@
 			children = (
 				D4ACACD319667B2400182070 /* UIColor+Comparison.h */,
 				D4ACACD419667B2400182070 /* UIColor+Comparison.m */,
+				D4A2564819C5145400BC3183 /* NSArray+Reverse.h */,
+				D4A2564919C5145400BC3183 /* NSArray+Reverse.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -418,8 +529,33 @@
 			files = (
 				D4ACAC9A1966601800182070 /* InfoPlist.strings in Resources */,
 				D4ACACAD1966601800182070 /* Images.xcassets in Resources */,
+				D4A2563019C4F74200BC3183 /* wood.png in Resources */,
+				D4A2563E19C4FD9100BC3183 /* dirt@2x.png in Resources */,
+				D4A2565B19C546FC00BC3183 /* rock.png in Resources */,
+				D4A2562819C4F6FD00BC3183 /* dirt.png in Resources */,
+				D4A2562A19C4F6FD00BC3183 /* plain.png in Resources */,
+				D4A2562B19C4F6FD00BC3183 /* brick.png in Resources */,
+				D4A2566119C5474800BC3183 /* tree@2x.png in Resources */,
+				D4A2564419C4FD9100BC3183 /* wood@2x.png in Resources */,
+				D4A2562919C4F6FD00BC3183 /* grass.png in Resources */,
+				D4A2564219C4FD9100BC3183 /* brick@2x.png in Resources */,
 				AC88CD011985655400B7A768 /* data.plist in Resources */,
+				D4A2564F19C5252000BC3183 /* gem_green.png in Resources */,
+				D4A2564319C4FD9100BC3183 /* water@2x.png in Resources */,
+				D4A2564E19C5252000BC3183 /* gem_blue.png in Resources */,
+				D4A2565519C5255200BC3183 /* gem_green@2x.png in Resources */,
+				D4A2565619C5255200BC3183 /* gem_orange@2x.png in Resources */,
+				D4A2565F19C5473700BC3183 /* tree.png in Resources */,
+				D4A2563F19C4FD9100BC3183 /* grass@2x.png in Resources */,
 				D4ACACA31966601800182070 /* Main.storyboard in Resources */,
+				D4A2562E19C4F73000BC3183 /* stone.png in Resources */,
+				D4A2564719C5104200BC3183 /* world.txt in Resources */,
+				D4A2562C19C4F6FD00BC3183 /* water.png in Resources */,
+				D4A2565419C5255200BC3183 /* gem_blue@2x.png in Resources */,
+				D4A2564019C4FD9100BC3183 /* plain@2x.png in Resources */,
+				D4A2565019C5252000BC3183 /* gem_orange.png in Resources */,
+				D4A2565D19C5470D00BC3183 /* rock@2x.png in Resources */,
+				D4A2564119C4FD9100BC3183 /* stone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,11 +577,15 @@
 				AC2695241969952C0001EE62 /* PGMenuController.m in Sources */,
 				D46CBA5A19B18992005D0BBB /* PGArcadeGameMode.m in Sources */,
 				D4ACAC9C1966601800182070 /* main.m in Sources */,
+				D4A2565919C5280A00BC3183 /* PGGemNode.m in Sources */,
 				D4ACACA91966601800182070 /* PGMainScene.m in Sources */,
 				D4741CD21969F34E00A6B7A3 /* PGGameMode.m in Sources */,
 				D4ACACA61966601800182070 /* PGViewController.m in Sources */,
+				D4A2563319C4F88500BC3183 /* PGWorldScene.m in Sources */,
 				D4ACACCD19666C5D00182070 /* PGSpriteNode.m in Sources */,
 				D4ACACD519667B2400182070 /* UIColor+Comparison.m in Sources */,
+				D4A2564A19C5145400BC3183 /* NSArray+Reverse.m in Sources */,
+				D4A2563619C4F93B00BC3183 /* PGWorldViewController.m in Sources */,
 				AC92BB811996EB9300151644 /* PGFbService.m in Sources */,
 				AC157C36198205AE007CA3C8 /* PGScoreCalculator.m in Sources */,
 				AC88CD041985669F00B7A768 /* PGDataService.m in Sources */,

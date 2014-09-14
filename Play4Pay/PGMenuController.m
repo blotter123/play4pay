@@ -71,14 +71,12 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [FlurryAds setAdDelegate:self];
     [FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [FlurryAds removeAdFromSpace:@"test_banner"];
-    [FlurryAds setAdDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning

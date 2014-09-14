@@ -22,5 +22,6 @@
 //  Import categories
 
     #import "UIColor+Comparison.h"
+    #import "NSArray+Reverse.h"
 
 #endif

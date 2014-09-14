@@ -116,6 +116,7 @@
         
         UIColor *nodeColor = [self.gameMode colorAtIndexPath:[NSIndexPath indexPathForItem:i inSection:rowIndex]];
         
+        //[[PGSpriteNode alloc] initWithImageNamed:@"grass.png"];//
         PGSpriteNode *sprite = [PGSpriteNode nodeWithSize:CGSizeMake(width, height) position:positionWithinContainer andColor:nodeColor];
         [self.gridContent addChild:sprite];
     }
