@@ -101,6 +101,7 @@ typedef enum {
             positionX += node.size.width;
         }
     }
+    //[self generateWorld];
 }
 
 #pragma mark - Methods

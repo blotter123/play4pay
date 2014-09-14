@@ -73,7 +73,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
+    //[FlurryAds fetchAndDisplayAdForSpace:@"test_banner" view:self.view size:BANNER_BOTTOM];
 }
 
 -(void) viewDidDisappear:(BOOL)animated{
