@@ -12,6 +12,7 @@
 
 - (void) initializeConfigurations;
 - (NSArray*) nextPathStep;
+- (NSDictionary*) rowTrees:(NSArray*) row;
 
 
 

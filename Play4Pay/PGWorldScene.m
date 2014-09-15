@@ -79,6 +79,7 @@ typedef enum {
         float       positionY = (i + 1.0f) * (BLOCK_HEIGHT / 2.0f);
         
         NSArray *row = [tile nextPathStep];
+        NSDictionary* rowTrees = [tile rowTrees:row];
         for (int a = 0; a < [row count]; a++) {
             
             SKSpriteNode *node = [self createNodeWithType:[(NSNumber*)[row objectAtIndex:a] integerValue]];
@@ -89,6 +90,17 @@ typedef enum {
             node.position = CGPointMake(positionX, positionY);
             
             [self.world addChild:node];
+            
+            NSNumber* treeIdentifier = (NSNumber*) [rowTrees valueForKey:[NSString stringWithFormat:@"%d",a]];
+            
+            if (treeIdentifier) {
+                PGNodeType treeType = [treeIdentifier intValue];
+                SKSpriteNode *treeNode = [self createNodeWithType:treeType];
+                treeNode.position = CGPointMake(positionX, positionY + (BLOCK_HEIGHT / 4));
+                treeNode.zPosition = 10;
+                
+                [self.world addChild:treeNode];
+            }
             
             positionX += node.size.width;
         }

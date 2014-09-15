@@ -69,25 +69,25 @@ typedef enum {
     return row;
 }
 
+-(NSDictionary*) rowTrees:(NSArray*) row{
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
+    for (int i = 0; i < [row count]; i++) {
+        PGNodeType type = [(NSNumber*)[row objectAtIndex:i] integerValue];
+        if ( type == kNodeTypeWater || type == kNodeTypeGrass) {
+            if (arc4random_uniform(10) > 6) {
+                [dict setObject:[NSNumber numberWithInt:type == kNodeTypeWater ? kNodeTypeRockItem : kNodeTypeTreeItem] forKey:[NSString stringWithFormat:@"%d",i]];
+            }
+        }
+    }
+    return dict;
+}
+
 -(NSArray*) generateRowFromPathAhead:(NSMutableArray*)pathAhead atIndex:(NSInteger) index{
     NSMutableArray* row = [[NSMutableArray alloc]init];
     NSArray* pathBounds = [pathAhead objectAtIndex:index];
     NSNumber* left = [pathBounds objectAtIndex:0];
     NSNumber* right = [pathBounds objectAtIndex:1];
-    for (int i = 0; i < [left intValue]; i++) {
-        [row addObject:[NSNumber numberWithInt:self.terrainType]];
-    }
-    for (int i = [left intValue]; i <= [right intValue]; i++) {
-        [row addObject:[NSNumber numberWithInt:self.pathType]];
-    }
-    for (int i = [right intValue]+1; i <= 5; i++) {
-        [row addObject:[NSNumber numberWithInt:self.terrainType]];
-    }
-    return row;
-}
-
-- (NSArray*) fillRow:(NSNumber*) left rightBound:(NSNumber*) right{
-    NSMutableArray* row = [[NSMutableArray alloc]init];
+    
     for (int i = 0; i < [left intValue]; i++) {
         [row addObject:[NSNumber numberWithInt:self.terrainType]];
     }
@@ -104,7 +104,7 @@ typedef enum {
 
 
 - (NSMutableArray*) updatePath{
-    bool turn = [self shouldSwapWithProbability:0.5];
+    bool turn = arc4random_uniform(10)>2;
     PGPathStepType nextDirection = FOLLOW;
     NSArray* lastPath = [self.pathBlockAhead objectAtIndex:3];
     NSNumber* lastLeft = [lastPath objectAtIndex:0];
@@ -136,6 +136,7 @@ typedef enum {
             [nextPathBlock addObject:[NSArray arrayWithObjects:lastLeft, lastRight, nil]];
             lastLeft = [NSNumber numberWithInteger:[lastLeft integerValue]+offset];
             [nextPathBlock addObject:[NSArray arrayWithObjects:lastLeft, lastRight, nil]];
+            NSLog(@"lastRight after Right: %@",lastRight);
         }
         else if(direction == LEFT){
             [nextPathBlock addObject:[NSArray arrayWithObjects:lastLeft, lastRight, nil]];
@@ -144,6 +145,7 @@ typedef enum {
             [nextPathBlock addObject:[NSArray arrayWithObjects:lastLeft, lastRight, nil]];
             lastRight = [NSNumber numberWithInteger:[lastRight integerValue]-offset];
             [nextPathBlock addObject:[NSArray arrayWithObjects:lastLeft, lastRight, nil]];
+            NSLog(@"lastLeft after Left: %@",lastLeft);
         }
     }
     
@@ -151,7 +153,7 @@ typedef enum {
 }
 
 - (void) updateWorld{
-    bool change = [self shouldSwapWithProbability:0.5];
+    bool change = [self shouldSwapWithProbability:0.8];
     if (change) {
         self.terrainType = [self randomTerrainType];
         self.pathType = [self randomPathTypeForTerrain:self.terrainType];
@@ -167,17 +169,15 @@ typedef enum {
 - (PGNodeType) randomPathTypeForTerrain:(PGNodeType) terrainType{
     //int rndValue = arc4random_uniform(11);
     if (terrainType == kNodeTypeWater) {
-            return kNodeTypeStone;
+        return kNodeTypeStone;
 
     }else{
-            return kNodeTypePlain;
+        return kNodeTypePlain;
     }
 }
 
 - (BOOL) shouldSwapWithProbability:(float)prob{
-    int lowerBound = 0;
-    int upperBound = 100;
-    int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+    int rndValue = arc4random_uniform(100);
     if (rndValue <= prob*100) {
         return true;
     }
@@ -187,18 +187,13 @@ typedef enum {
 }
 
 - (PGPathStepType) randomDirection:(NSNumber*) lastLeft andRight:(NSNumber*) lastRight{
+    
     PGPathStepType direction = FOLLOW;
-    if (([lastLeft integerValue]-2) < 0) {
-        direction = RIGHT;
-    }
-    else if ([lastRight integerValue]+2 > 6){
+    if ([lastLeft integerValue]-1 > 0) {
         direction = LEFT;
-    }
-    else{
-        direction = LEFT;
-        if ([self shouldSwapWithProbability:0.5]) {
-            direction = RIGHT;
         }
+    else if([lastRight integerValue]+1 < 6){
+        direction = RIGHT;
     }
     return direction;
 }
